@@ -12,7 +12,7 @@ const { ccclass, property } = _decorator;
 export class Player extends Component {
     /* class member could be defined like this */
     // dummy = '';
-    
+
     /* use `property` decorator if your want the member to be serializable */
     // 生命值
     @property
@@ -32,7 +32,7 @@ export class Player extends Component {
     reset(hp) {
         this.HP = hp;
     }
-    update (deltaTime: number) {
+    update(deltaTime: number) {
         // console.log(deltaTime);
         // Your update function goes here.
     }

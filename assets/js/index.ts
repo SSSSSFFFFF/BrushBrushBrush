@@ -24,7 +24,7 @@ export class Index extends Component {
     // @property({ type: Enemy })
     // private Enemy = null;
 
-    start () {
+    start() {
         this.buttonN = find("Canvas/Button")
         this.buttonN.on(Button.EventType.CLICK, this.btnClick, this);
     }
@@ -65,7 +65,7 @@ export class Index extends Component {
             }
         }, 1);
     }
-    update (deltaTime: number) {
+    update(deltaTime: number) {
         let PlayerCom = find("Canvas/Player").getComponent(Player)
         let EnemyCom = find("Canvas/Enemy").getComponent(Enemy)
         find("Canvas/Player/Info").getComponent(Label).string = "Player\nHP：" + PlayerCom.HP.toString() + "\nATK: " + PlayerCom.ATK.toString()
