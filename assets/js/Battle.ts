@@ -5,7 +5,7 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
-import { _decorator, Component, Node, Label, Button, find, Canvas, UIOpacity, UITransform, Color } from 'cc';
+import { _decorator, Component, Node, Label, Button, find, Canvas, UIOpacity, UITransform } from 'cc';
 const { ccclass, property, integer, float, boolean, string, type } = _decorator;
 import { Player } from "./Player";
 import { Enemy } from "./Enemy";
@@ -33,6 +33,8 @@ export class Battle extends Component {
         this.checkNums()
     }
     checkNums() {
+        //战斗结果
+        let result = find("Canvas/Battle/ScrollView/view/content/item").getComponent(Label)
         let player = find("Canvas/Player").getComponent(Player)
         let enemy = find("Canvas/Battle/Enemy").getComponent(Enemy)
         this.schedule(this.callback = function () {
@@ -42,12 +44,8 @@ export class Battle extends Component {
                 damgeReult = player.ATK*player.CritD
             }
 
-            let node = new Node('Label');
-            node.parent = find("Canvas/Battle/ScrollView/view/content")
-            console.log(node);
-            node.addComponent(Label).fontSize = 16
-            node.getComponent(Label).color = new Color("#000000")
-            node.getComponent(Label).string += '\n你造成了' + damgeReult + '点伤害，受到了' + enemy.ATK + '点伤害'
+            // find("Canvas/Battle/ScrollView/view/content").
+            result.string += '\n你造成了' + damgeReult + '点伤害，受到了' + enemy.ATK + '点伤害'
             // 怪物血量
             enemy.HP -= damgeReult
 
@@ -56,7 +54,7 @@ export class Battle extends Component {
             //player失败
             if (player.HP <= 0) {
                 player.HP = 0;
-                // result.string += '\n战斗失败'
+                result.string += '\n战斗失败'
             }
             //enemy失败
             if (enemy.HP <= 0) {
@@ -64,7 +62,7 @@ export class Battle extends Component {
                 this.enemyHp += 4
                 this.playerHp++
                 enemy.HP = 0;
-                // result.string += '\n战斗成功'
+                result.string += '\n战斗成功'
             }
             //结束
             if (player.HP <= 0 || enemy.HP <= 0) {
@@ -84,6 +82,5 @@ export class Battle extends Component {
 
 
         console.log(find("Canvas/Battle/ScrollView/view/content").getComponent(UITransform).height);
-        // find("Canvas/Battle/ScrollView/view/content").getComponent(UITransform).height = find("Canvas/Battle/ScrollView/view/content").getComponent(UITransform).height
     }
 }
