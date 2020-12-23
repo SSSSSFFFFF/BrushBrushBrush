@@ -2,7 +2,7 @@
   "ver": "4.0.9",
   "importer": "typescript",
   "imported": true,
-  "uuid": "45700f1e-1155-4569-8ef6-1e34fb69a171",
+  "uuid": "4211efcf-445c-466b-83a5-558c88cb8ade",
   "files": [
     ".js",
     "editor.js",
@@ -11,7 +11,7 @@
   "subMetas": {},
   "userData": {
     "importAsPlugin": false,
-    "moduleId": "project:///assets/js/Index.js",
+    "moduleId": "project:///assets/js/UI.js",
     "importerSettings": 7
   }
 }
