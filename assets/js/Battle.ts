@@ -82,5 +82,6 @@ export class Battle extends Component {
 
 
         console.log(find("Canvas/Battle/ScrollView/view/content").getComponent(UITransform).height);
+        // find("Canvas/Battle/ScrollView/view/content").getComponent(UITransform).height = find("Canvas/Battle/ScrollView/view/content/item").getComponent(UITransform).height
     }
 }
