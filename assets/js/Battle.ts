@@ -20,6 +20,16 @@ export class Battle extends Component {
     start() {
         this.Battle()
     }
+    update(deltaTime: number) {
+        //fight
+        let PlayerCom = find("Canvas/Player").getComponent(Player).playerData
+        let EnemyCom = find("Canvas/Battle/Enemy").getComponent(Enemy)
+        find("Canvas/Battle/Player/Info").getComponent(Label).string = "Player\nHP：" + PlayerCom.HP.toString()
+        find("Canvas/Battle/Enemy/Info").getComponent(Label).string = "Enemy\nHP：" + EnemyCom.HP.toString() + "\nATK: " + EnemyCom.ATK.toString()
+
+
+        find("Canvas/Battle/ScrollView/view/content").getComponent(UITransform).height = find("Canvas/Battle/ScrollView/view/content/item").getComponent(UITransform).height
+    }
     Battle() {
         this.startBtn = find("Canvas/Battle/Button")
         this.startBtn.on(Button.EventType.CLICK, this.btnClick, this)
@@ -28,14 +38,14 @@ export class Battle extends Component {
         // 注意这种方式注册的事件，无法传递 customEventData
         let player = find("Canvas/Player").getComponent(Player)
         let enemy = find("Canvas/Battle/Enemy").getComponent(Enemy)
-        this.startBtn.getComponent(Button).interactable = false;
+        this.startBtn.getComponent(Button).interactable = false
         this.checkNums()
     }
     checkNums() {
         //战斗结果
         let result = find("Canvas/Battle/ScrollView/view/content/item").getComponent(Label)
         result.string = '\n' + result.string
-        let player = find("Canvas/Player").getComponent(Player)
+        let player = find("Canvas/Player").getComponent(Player).playerData
         let enemy = find("Canvas/Battle/Enemy").getComponent(Enemy)
         this.schedule(this.callback = function () {
             let damgeReult = player.ATK
@@ -52,37 +62,32 @@ export class Battle extends Component {
 
             // 玩家血量
             player.HP -= enemy.ATK
+
+            let battleResult
             //player失败
             if (player.HP <= 0) {
-                player.HP = 0;
-                result.string = '战斗失败\n' + result.string
+                player.HP = 0
+                battleResult = '战斗失败\n' + result.string
             }
+
             //enemy失败
             if (enemy.HP <= 0) {
-                player.MaxHp++;
-                player.EXP++;
+                player.MaxHp++
+                player.EXP++
+                find("Canvas/Player").getComponent(Player).checkLevel()
                 this.enemyHp += 4
-                enemy.HP = 0;
-                result.string = '战斗成功\n' + result.string
+                enemy.HP = 0
+                battleResult = '战斗成功\n' + result.string
             }
             //结束
             if (player.HP <= 0 || enemy.HP <= 0) {
-                player.reset(player.MaxHp);
+                result.string = battleResult
+                find("Canvas/Player").getComponent(Player).setPlayerData(player)
+                find("Canvas/Player").getComponent(Player).reset(player.MaxHp);
                 enemy.reset(this.enemyHp);
                 this.startBtn.getComponent(Button).interactable = true;
                 this.unschedule(this.callback);
             }
         }, 1);
-    }
-    update(deltaTime: number) {
-        //fight
-        let PlayerCom = find("Canvas/Player").getComponent(Player)
-        let EnemyCom = find("Canvas/Battle/Enemy").getComponent(Enemy)
-        find("Canvas/Battle/Player/Info").getComponent(Label).string = "Player\nHP：" + PlayerCom.HP.toString()
-        find("Canvas/Battle/Enemy/Info").getComponent(Label).string = "Enemy\nHP：" + EnemyCom.HP.toString() + "\nATK: " + EnemyCom.ATK.toString()
-
-
-        console.log(find("Canvas/Battle/ScrollView/view/content").getComponent(UITransform).height);
-        find("Canvas/Battle/ScrollView/view/content").getComponent(UITransform).height = find("Canvas/Battle/ScrollView/view/content/item").getComponent(UITransform).height
     }
 }
