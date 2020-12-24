@@ -14,7 +14,6 @@ import { Enemy } from "./Enemy";
 export class Battle extends Component {
     callback: () => void;
     startBtn: Node;
-    playerHp = 20;
     enemyHp = 10;
     battleShow: boolean = true;
 
@@ -35,6 +34,7 @@ export class Battle extends Component {
     checkNums() {
         //战斗结果
         let result = find("Canvas/Battle/ScrollView/view/content/item").getComponent(Label)
+        result.string = '\n' + result.string
         let player = find("Canvas/Player").getComponent(Player)
         let enemy = find("Canvas/Battle/Enemy").getComponent(Enemy)
         this.schedule(this.callback = function () {
@@ -42,10 +42,11 @@ export class Battle extends Component {
             if (Math.random() < player.Crit) {
                 //暴击成功
                 damgeReult = player.ATK*player.CritD
+                result.string = '暴击了！你造成了' + damgeReult + '点伤害，受到了' + enemy.ATK + '点伤害\n' + result.string
+            } else {
+                result.string = '你造成了' + damgeReult + '点伤害，受到了' + enemy.ATK + '点伤害\n' + result.string
             }
 
-            // find("Canvas/Battle/ScrollView/view/content").
-            result.string += '\n你造成了' + damgeReult + '点伤害，受到了' + enemy.ATK + '点伤害'
             // 怪物血量
             enemy.HP -= damgeReult
 
@@ -54,19 +55,19 @@ export class Battle extends Component {
             //player失败
             if (player.HP <= 0) {
                 player.HP = 0;
-                result.string += '\n战斗失败'
+                result.string = '战斗失败\n' + result.string
             }
             //enemy失败
             if (enemy.HP <= 0) {
+                player.MaxHp++;
                 player.EXP++;
                 this.enemyHp += 4
-                this.playerHp++
                 enemy.HP = 0;
-                result.string += '\n战斗成功'
+                result.string = '战斗成功\n' + result.string
             }
             //结束
             if (player.HP <= 0 || enemy.HP <= 0) {
-                player.reset(this.playerHp);
+                player.reset(player.MaxHp);
                 enemy.reset(this.enemyHp);
                 this.startBtn.getComponent(Button).interactable = true;
                 this.unschedule(this.callback);
@@ -82,6 +83,6 @@ export class Battle extends Component {
 
 
         console.log(find("Canvas/Battle/ScrollView/view/content").getComponent(UITransform).height);
-        // find("Canvas/Battle/ScrollView/view/content").getComponent(UITransform).height = find("Canvas/Battle/ScrollView/view/content/item").getComponent(UITransform).height
+        find("Canvas/Battle/ScrollView/view/content").getComponent(UITransform).height = find("Canvas/Battle/ScrollView/view/content/item").getComponent(UITransform).height
     }
 }
