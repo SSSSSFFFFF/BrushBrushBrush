@@ -15,6 +15,7 @@ export class Battle extends Component {
     callback: () => void;
     startBtn: Node;
     enemyHp = 10;
+    enemyATK = 1.5;
     battleShow: boolean = true;
 
     start() {
@@ -26,7 +27,6 @@ export class Battle extends Component {
         let EnemyCom = find("Canvas/Battle/Enemy").getComponent(Enemy)
         find("Canvas/Battle/Player/Info").getComponent(Label).string = "Player\nHP：" + PlayerCom.HP.toString()
         find("Canvas/Battle/Enemy/Info").getComponent(Label).string = "Enemy\nHP：" + EnemyCom.HP.toString() + "\nATK: " + EnemyCom.ATK.toString()
-
 
         find("Canvas/Battle/ScrollView/view/content").getComponent(UITransform).height = find("Canvas/Battle/ScrollView/view/content/item").getComponent(UITransform).height
     }
@@ -58,7 +58,7 @@ export class Battle extends Component {
             }
 
             // 怪物血量
-            enemy.HP -= damgeReult
+            enemy.HP = Number((enemy.HP - damgeReult).toFixed(2))
 
             // 玩家血量
             player.HP -= enemy.ATK
@@ -72,22 +72,24 @@ export class Battle extends Component {
 
             //enemy失败
             if (enemy.HP <= 0) {
-                player.MaxHp++
-                player.EXP++
-                find("Canvas/Player").getComponent(Player).checkLevel()
+                let enemyExp = 3
+                player.EXP += enemyExp;
+                // find("Canvas/Player").getComponent(Player).checkLevel()
                 this.enemyHp += 4
+                this.enemyATK += 1
                 enemy.HP = 0
-                battleResult = '战斗成功\n' + result.string
+                battleResult = '战斗成功，获得' + enemyExp+'点经验值\n' + result.string
             }
             //结束
             if (player.HP <= 0 || enemy.HP <= 0) {
                 result.string = battleResult
                 find("Canvas/Player").getComponent(Player).setPlayerData(player)
                 find("Canvas/Player").getComponent(Player).reset(player.MaxHp);
-                enemy.reset(this.enemyHp);
+                enemy.reset(this.enemyHp, this.enemyATK);
                 this.startBtn.getComponent(Button).interactable = true;
                 this.unschedule(this.callback);
             }
         }, 1);
     }
+
 }

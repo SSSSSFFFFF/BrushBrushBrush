@@ -2,7 +2,7 @@
   "ver": "4.0.9",
   "importer": "typescript",
   "imported": true,
-  "uuid": "4211efcf-445c-466b-83a5-558c88cb8ade",
+  "uuid": "f4710e78-09d1-4d3a-8631-19c566842f48",
   "files": [
     ".js",
     "editor.js",
@@ -11,7 +11,7 @@
   "subMetas": {},
   "userData": {
     "importAsPlugin": false,
-    "moduleId": "project:///assets/js/UI.js",
+    "moduleId": "project:///assets/ts/Player.js",
     "importerSettings": 7
   }
 }

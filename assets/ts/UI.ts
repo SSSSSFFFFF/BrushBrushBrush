@@ -18,6 +18,7 @@ export class UI extends Component {
     // serializableDummy = 0;
 
     start () {
+        this.node.getChildByName("toBattle").getComponent(Button).interactable = false
         this.node.getChildByName("toPlayer").on(Button.EventType.CLICK, this.toPlayer, this)
         this.node.getChildByName("toBattle").on(Button.EventType.CLICK, this.toBattle, this)
     }
@@ -26,12 +27,16 @@ export class UI extends Component {
         find("Canvas/UI/toBattle").getComponent(Sprite).color = new Color('#646464')
         find("Canvas/Battle").getComponent(Animation).play("toright");
         find("Canvas/Player").getComponent(Animation).play("PlayerToRight");
+        this.node.getChildByName("toPlayer").getComponent(Button).interactable = false
+        this.node.getChildByName("toBattle").getComponent(Button).interactable = true
     }
     toBattle() {
         find("Canvas/UI/toPlayer").getComponent(Sprite).color = new Color('#646464')
         find("Canvas/UI/toBattle").getComponent(Sprite).color = new Color('#ffffff')
         find("Canvas/Battle").getComponent(Animation).play("toleft");
         find("Canvas/Player").getComponent(Animation).play("PlayerToLeft");
+        this.node.getChildByName("toPlayer").getComponent(Button).interactable = true
+        this.node.getChildByName("toBattle").getComponent(Button).interactable = false
     }
     // update (deltaTime: number) {
     //     // Your update function goes here.

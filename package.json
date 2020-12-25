@@ -2,5 +2,6 @@
   "name": "BrushBrushBrush",
   "type": "3d",
   "uuid": "45984152-bb5f-4c8b-900a-0f6df8c6bbfc",
-  "version": "3.0.0-Preview.1"
+  "version": "3.0.0-Preview.1",
+  "dependencies": {}
 }

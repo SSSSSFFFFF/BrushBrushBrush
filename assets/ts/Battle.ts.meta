@@ -2,7 +2,7 @@
   "ver": "4.0.9",
   "importer": "typescript",
   "imported": true,
-  "uuid": "f4710e78-09d1-4d3a-8631-19c566842f48",
+  "uuid": "d56f6a1d-6e38-470a-a534-b2dce0e7cb31",
   "files": [
     ".js",
     "editor.js",
@@ -11,7 +11,7 @@
   "subMetas": {},
   "userData": {
     "importAsPlugin": false,
-    "moduleId": "project:///assets/js/Player.js",
+    "moduleId": "project:///assets/ts/Battle.js",
     "importerSettings": 7
   }
 }

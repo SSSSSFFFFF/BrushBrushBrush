@@ -25,8 +25,9 @@ export class Enemy extends Component {
     start () {
         // Your initialization goes here.
     }
-    reset(hp) {
-        this.HP = hp;
+    reset(HP,ATK) {
+        this.HP = HP;
+        this.ATK = ATK;
     }
     update (deltaTime: number) {
         // Your update function goes here.

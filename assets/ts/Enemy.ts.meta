@@ -11,7 +11,7 @@
   "subMetas": {},
   "userData": {
     "importAsPlugin": false,
-    "moduleId": "project:///assets/js/Enemy.js",
+    "moduleId": "project:///assets/ts/Enemy.js",
     "importerSettings": 7
   }
 }
