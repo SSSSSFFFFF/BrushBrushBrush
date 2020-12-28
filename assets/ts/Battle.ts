@@ -56,16 +56,15 @@ export class Battle extends Component {
             node.parent = find("Canvas/Battle/Enemies");
             this.enemyNodes.push(node)
         }
-        this.battleProcess();
+        this.battleProcess(num);
+    }
+    battleProcess(num){
         this.schedule(this.battling = function () {
             for (let i = 0; i < num; i++) {
                 let enemyNow = this.enemyNodes[i].getComponent(Enemy).enemyNow
                 this.playerData.HP = Number((this.playerData.HP - enemyNow.ATK).toFixed())
             }
         }, 1);
-    }
-    battleProcess(){
-
     }
     getenemyData() {
         this.enemyData = JSON.parse(localStorage.getItem('enemyData'));
