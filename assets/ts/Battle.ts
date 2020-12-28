@@ -20,7 +20,7 @@ export class Battle extends Component {
     playerData: any;
     enemyNodes: any[] = [];
     //怪物生成数量
-    num: number = 10;
+    num: number = 5;
     result: string;
 
     onLoad() {
@@ -33,15 +33,14 @@ export class Battle extends Component {
         find("Canvas/Battle/Button").on(Button.EventType.CLICK, this.btnClick, this)
         //生成敌人(数量)
         // this.generateEnemies(10)
-
     }
     update(deltaTime: number) {
         //判断结果
-        if (this.playerData.HP <= 0){
-            this.playerData.HP = 0;
-            this.result = 'fail'
-            console.log('失败了')
-        }
+        // if (this.playerData.HP <= 0){
+        //     this.playerData.HP = 0;
+        //     this.result = 'fail'
+        //     console.log('失败了')
+        // }
     }
     generateEnemies(num){
         for (let i = 0; i < num; i++) {
@@ -56,15 +55,16 @@ export class Battle extends Component {
             node.parent = find("Canvas/Battle/Enemies");
             this.enemyNodes.push(node)
         }
+        //战斗过程
         this.battleProcess(num);
     }
     battleProcess(num){
-        this.schedule(this.battling = function () {
-            for (let i = 0; i < num; i++) {
+        for (let i = 0; i < num; i++) {
+            this.schedule(this.battling = function () {
                 let enemyNow = this.enemyNodes[i].getComponent(Enemy).enemyNow
                 this.playerData.HP = Number((this.playerData.HP - enemyNow.ATK).toFixed())
-            }
-        }, 1);
+            }, 1);
+        }
     }
     getenemyData() {
         this.enemyData = JSON.parse(localStorage.getItem('enemyData'));
@@ -75,18 +75,21 @@ export class Battle extends Component {
                     Level: 'white',
                     MaxHp: '200',
                     ATK: '2',
+                    AtkRate: '2',//攻速
                 },
                 blue: {
                     Level: 'blue',
                     MaxHp: '300',
                     ATK: '3',
                     chance: 0.3,//生成几率,实际为0.2 (0.3-0.1
+                    AtkRate: '3',
                 },
                 gold: {
                     Level: 'gold',
                     MaxHp: '500',
                     ATK: '5',
                     chance: 0.1,//生成几率
+                    AtkRate: '4',
                 }
             }
             localStorage.setItem('enemyData', JSON.stringify(this.enemyData))
