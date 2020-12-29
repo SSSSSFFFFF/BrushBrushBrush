@@ -68,21 +68,21 @@ export class Player extends Component {
         //如果不存在用户数据则新建
         if (!this.playerData) {
             this.playerData = {
-                'MaxHp': 200,//最大生命值
-                'EXP': 0,//经验值  
-                'ATK': 2,//攻击力
-                'Crit': 0.1,//暴击率
-                'CritD': 1.5,//暴击伤害
-                'Level': 1,//等级
-                'LevelUpNeedExp':[0,5,20,50,100,'Max'],//升级所需经验
-                'Points':10, //天赋点
-                'HPS':1,//秒回
-                'addPoints': { //记录天赋添加的值
-                    'MaxHp':0,
-                    'ATK':0,
-                    'Crit':0,
-                    'CritD':0,
-                    'HPS':0,
+                MaxHp: 50,//最大生命值
+                EXP: 0,//经验值  
+                ATK: 2,//攻击力
+                Crit: 0.1,//暴击率
+                CritD: 1.5,//暴击伤害
+                Level: 1,//等级
+                LevelUpNeedExp:[0,5,20,50,100,'Max'],//升级所需经验
+                Points:10, //天赋点
+                HPS:1,//秒回
+                addPoints: { //记录天赋添加的值
+                    MaxHp:0,
+                    ATK:0,
+                    Crit:0,
+                    CritD:0,
+                    HPS:0,
                 }
             }
             localStorage.setItem('playerData', JSON.stringify(this.playerData))
