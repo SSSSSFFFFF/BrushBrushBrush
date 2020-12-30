@@ -14,15 +14,20 @@ import { Enemy } from "./Enemy";
 export class Battle extends Component {
     @property({ type: Prefab })
     private enemyPre: Prefab = null;
-
+    // 怪物数据
     enemyData: any;
+    // 玩家数据
     playerData: any;
+    //怪物节点
     enemyNodes: any[] = [];
     //怪物生成数量
-    num: number = 2;
+    num: number = 3;
+    // 战斗结果
     result: string;
+    // 怪物攻击定时器
     time: any;
-
+    //玩家攻击定时器
+    playerTime:any;
     onLoad() {
         //加载玩家数据
         this.playerData = find("Canvas/Player").getComponent(Player).playerData;
@@ -46,25 +51,28 @@ export class Battle extends Component {
     }
     checkResult (){
         let that = this;
-        if(this.result){
-            if (this.playerData.HP <= 0) {
-                this.playerData.HP = 0;
-                this.result = 'fail';
-                console.log('失败了')
-                battleEnd()
-            }
+        if (this.result){
+            find("Canvas/Battle/Result").getComponent(Label).string = this.result
             //战斗结束
-            function battleEnd() {
-                //清除怪物攻击定时器
-                for (let i = 0; i < Object.keys(that.time).length; i++) {
-                    clearInterval(that.time[i])
-                }
-                //清除怪物节点
-                for (let i = 0; i < that.enemyNodes.length; i++) {
-                    that.enemyNodes[i].destroy()
-                }
-            }
+            that.battleEnd()
         }
+    } 
+    battleEnd() {
+        console.log("战斗结束");
+        let that = this
+        //清除玩家攻击定时器
+        clearInterval(that.playerTime)
+        //清除怪物攻击定时器
+        for (let i = 0; i < Object.keys(that.time).length; i++) {
+            clearInterval(that.time[i])
+        }
+        //清除怪物节点
+        for (let i = 0; i < that.enemyNodes.length; i++) {
+            that.enemyNodes[i].destroy()
+        }
+        that.enemyNodes = []
+        //清空战斗结果
+        this.result = null
     }
 
     generateEnemies(num){
@@ -74,8 +82,6 @@ export class Battle extends Component {
         }
     }
     btnClick(button: Button) {
-        //清空战斗结果
-        this.result = ''
         let num = this.num
         for (let i = 0; i < num; i++) {
             let node = instantiate(this.enemyPre);
@@ -86,21 +92,42 @@ export class Battle extends Component {
         this.battleProcess(num);
     }
     battleProcess(num){
+        let that = this
         this.time = {}
+        //怪物攻击
         for (let i = 0; i < num; i++) {
             let enemyNow = this.enemyNodes[i].getComponent(Enemy).enemyNow
-            console.log(enemyNow);
             this.time[i] = setInterval(() => {
-                //收到攻击显示
+                //显示受到攻击
                 find("Canvas/Battle/Player/Status").getComponent(RichText).string = '-' + Number(enemyNow.ATK).toFixed()
                 this.playerData.HP = Number((this.playerData.HP - enemyNow.ATK).toFixed())
-                
+                if (this.playerData.HP <= 0) {
+                    this.playerData.HP = 0;
+                    this.result = 'fail';
+                    console.log('失败了')
+                }
             }, enemyNow.AtkRate)
-            // if (this.playerData.HP <= 0){
-            //     clearInterval(time[num])
-            // }
         }
-        console.log(this.time);
+        // 玩家攻击
+        playerAtk(0)
+        function playerAtk(i) {
+            let enemyNow = that.enemyNodes[i].getComponent(Enemy).enemyNow
+            console.log(enemyNow);
+            that.playerTime = setInterval(() => {
+                enemyNow.MaxHp = Number((enemyNow.MaxHp - that.playerData.ATK).toFixed())
+                if (enemyNow.status == 'lose' && i < that.num-1) {
+                    clearTimeout(that.playerTime)
+                    let newi = i + 1
+                    playerAtk(newi)
+                }
+                if (enemyNow.status == 'lose' && i == that.num -1 ) {
+                    clearTimeout(that.playerTime)
+                    that.result = 'success'
+                    console.log('成功了')
+                }
+            }, that.playerData.AtkRate)
+        }
+
     }
     getenemyData() {
         this.enemyData = JSON.parse(localStorage.getItem('enemyData'));
@@ -124,7 +151,7 @@ export class Battle extends Component {
                     Level: 'gold',
                     MaxHp: '500',
                     ATK: '15',
-                    chance: 0.1,//生成几率
+                    chance: 0.1,//生成几率c
                     AtkRate: '200',
                 }
             }

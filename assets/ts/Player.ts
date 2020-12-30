@@ -43,7 +43,7 @@ export class Player extends Component {
         let playerData = this.playerData
         this.schedule(this.callback = function () {
             if (playerData.HP < playerData.MaxHp) {
-                playerData.HP = Number(playerData.HP) + Number(playerData.HPS)
+                playerData.HP = Number(playerData.HP) + Number(Number(playerData.HPS).toFixed(2))
             }
         }, 1);
     }
@@ -68,15 +68,16 @@ export class Player extends Component {
         //如果不存在用户数据则新建
         if (!this.playerData) {
             this.playerData = {
-                MaxHp: 50,//最大生命值
+                MaxHp: 300,//最大生命值
                 EXP: 0,//经验值  
-                ATK: 2,//攻击力
+                ATK: 40,//攻击力
+                AtkRate: '200',//攻速(多少毫秒攻击一次)
                 Crit: 0.1,//暴击率
                 CritD: 1.5,//暴击伤害
                 Level: 1,//等级
                 LevelUpNeedExp:[0,5,20,50,100,'Max'],//升级所需经验
                 Points:10, //天赋点
-                HPS:1,//秒回
+                HPS:5.5,//秒回
                 addPoints: { //记录天赋添加的值
                     MaxHp:0,
                     ATK:0,
@@ -107,6 +108,6 @@ export class Player extends Component {
             +'\n经验值：' + playerData.EXP + '/' + playerData.LevelUpNeedExp[playerData.Level]
         + '\n暴击率：' + (playerData.Crit * 100).toFixed(2)+ '%'
             + '\n暴击伤害：' + (playerData.CritD * 100).toFixed(2) + '%'
-        + '\n每秒恢复：' + playerData.HPS+ '/s'
+        + '\n每秒恢复生命值：' + playerData.HPS+ '/s'
     }
 }
