@@ -30,6 +30,7 @@ export class Enemy extends Component {
             thisLabel.getComponent(Label).string = 'lose'
             enemyNow.status = 'lose'
             
+            if(Math.random() <)
             // let playerData = JSON.parse(localStorage.getItem('playerData'));
             // playerData.bag.push('')
             
