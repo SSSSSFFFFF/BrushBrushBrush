@@ -71,7 +71,7 @@ export class Player extends Component {
                 MaxHp: 1000,//最大生命值
                 EXP: 0,//经验值  
                 ATK: 40,//攻击力
-                AtkRate: '500',//攻速(多少毫秒攻击一次)
+                AtkRate: 500,//攻速(多少毫秒攻击一次)
                 Crit: 0.1,//暴击率
                 CritD: 1.5,//暴击伤害
                 Level: 1,//等级
@@ -84,7 +84,9 @@ export class Player extends Component {
                     Crit:0,
                     CritD:0,
                     HPS:0,
-                }
+                },
+                bag:[],
+                progress:0,
             }
             localStorage.setItem('playerData', JSON.stringify(this.playerData))
         }
@@ -106,8 +108,9 @@ export class Player extends Component {
             +'\n生命值：' + playerData.HP + '/' + playerData.MaxHp
             +'\n攻击力：' + playerData.ATK
             +'\n经验值：' + playerData.EXP + '/' + playerData.LevelUpNeedExp[playerData.Level]
-        + '\n暴击率：' + (playerData.Crit * 100).toFixed(2)+ '%'
-            + '\n暴击伤害：' + (playerData.CritD * 100).toFixed(2) + '%'
+        + '\n攻击速度：' + Number((Number(playerData.AtkRate)/1000).toFixed(2))*100 +'%'
+        // + '\n暴击率：' + (playerData.Crit * 100).toFixed(2)+ '%'
+        //     + '\n暴击伤害：' + (playerData.CritD * 100).toFixed(2) + '%'
         + '\n每秒恢复生命值：' + playerData.HPS+ '/s'
     }
 }

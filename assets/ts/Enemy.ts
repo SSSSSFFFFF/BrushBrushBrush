@@ -22,16 +22,21 @@ export class Enemy extends Component {
         this.updateEnemyData();
     }
     updateEnemyData(){
+
         let enemyNow = this.enemyNow
         let thisLabel = find("Info", this.node)
         thisLabel.getComponent(Label).string = enemyNow.Level + '\n血量：' + enemyNow.MaxHp + '\n攻击力：' + enemyNow.ATK
         if (enemyNow.MaxHp <= 0){
             thisLabel.getComponent(Label).string = 'lose'
             enemyNow.status = 'lose'
+            
+            // let playerData = JSON.parse(localStorage.getItem('playerData'));
+            // playerData.bag.push('')
+            
         }
     }
     giveEnemyProperty(){
-        this.enemyData = window.enemyData;
+        this.enemyData = JSON.parse(JSON.stringify(globalThis.enemyData))
         let enemyData = this.enemyData
         console.log(enemyData);
         //当前生成的怪物属性
@@ -46,4 +51,5 @@ export class Enemy extends Component {
 
         this.enemyNow = enemyNow
     }
+    
 }
