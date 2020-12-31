@@ -68,10 +68,10 @@ export class Player extends Component {
         //如果不存在用户数据则新建
         if (!this.playerData) {
             this.playerData = {
-                MaxHp: 300,//最大生命值
+                MaxHp: 1000,//最大生命值
                 EXP: 0,//经验值  
                 ATK: 40,//攻击力
-                AtkRate: '200',//攻速(多少毫秒攻击一次)
+                AtkRate: '500',//攻速(多少毫秒攻击一次)
                 Crit: 0.1,//暴击率
                 CritD: 1.5,//暴击伤害
                 Level: 1,//等级

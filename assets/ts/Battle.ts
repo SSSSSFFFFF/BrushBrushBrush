@@ -5,7 +5,7 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
-import { _decorator, Component, Button, find, Prefab, instantiate, Label, RichText } from 'cc';
+import { _decorator, Component, Button, find, Prefab, instantiate, Label, RichText, __private } from 'cc';
 const { ccclass, property, integer, float, boolean, string, type } = _decorator;
 import { Player } from "./Player";
 import { Enemy } from "./Enemy";
@@ -36,8 +36,30 @@ export class Battle extends Component {
     }
     start() {
         find("Canvas/Battle/Button").on(Button.EventType.CLICK, this.btnClick, this)
-        //生成敌人(数量)
-        // this.generateEnemies(10)
+        //初步调整难度
+        find("Canvas/Battle/ScrollView/view/content/Button").on(Button.EventType.CLICK, this.Button, this)
+        find("Canvas/Battle/ScrollView/view/content/Button-001").on(Button.EventType.CLICK, this.Button, this)
+        find("Canvas/Battle/ScrollView/view/content/Button-002").on(Button.EventType.CLICK, this.Button, this)
+    }
+    Button(button) {
+        let that = this;
+        console.log(button.node.name);
+        switch (button.node.name) {
+            case 'Button':
+                localStorage.setItem('hard', '1')
+                break;
+            case 'Button-001':
+                localStorage.setItem('hard', '2')
+                break;
+            case 'Button-002':
+                localStorage.setItem('hard', '3')
+                break;
+            default:
+                break;
+        }
+        //加载敌人数据
+        this.getenemyData()
+
     }
     update(deltaTime: number) {
         //判断结果
@@ -71,16 +93,11 @@ export class Battle extends Component {
             that.enemyNodes[i].destroy()
         }
         that.enemyNodes = []
+        that.playerData.HP = that.playerData.MaxHp 
         //清空战斗结果
         this.result = null
     }
 
-    generateEnemies(num){
-        for (let i = 0; i < num; i++) {
-            let node = instantiate(this.enemyPre);
-            node.parent = find("Canvas/Battle/Enemies");
-        }
-    }
     btnClick(button: Button) {
         let num = this.num
         for (let i = 0; i < num; i++) {
@@ -88,6 +105,7 @@ export class Battle extends Component {
             node.parent = find("Canvas/Battle/Enemies");
             this.enemyNodes.push(node)
         }
+        console.log(this.enemyNodes);
         //战斗过程
         this.battleProcess(num);
     }
@@ -97,6 +115,7 @@ export class Battle extends Component {
         //怪物攻击
         for (let i = 0; i < num; i++) {
             let enemyNow = this.enemyNodes[i].getComponent(Enemy).enemyNow
+            console.log(enemyNow);
             this.time[i] = setInterval(() => {
                 //显示受到攻击
                 find("Canvas/Battle/Player/Status").getComponent(RichText).string = '-' + Number(enemyNow.ATK).toFixed()
@@ -112,9 +131,10 @@ export class Battle extends Component {
         playerAtk(0)
         function playerAtk(i) {
             let enemyNow = that.enemyNodes[i].getComponent(Enemy).enemyNow
-            console.log(enemyNow);
+            console.log(i, enemyNow);
             that.playerTime = setInterval(() => {
                 enemyNow.MaxHp = Number((enemyNow.MaxHp - that.playerData.ATK).toFixed())
+                find("RichText", that.enemyNodes[i]).getComponent(RichText).string = '-' + Number(that.playerData.ATK).toFixed()
                 if (enemyNow.status == 'lose' && i < that.num-1) {
                     clearTimeout(that.playerTime)
                     let newi = i + 1
@@ -130,33 +150,41 @@ export class Battle extends Component {
 
     }
     getenemyData() {
-        this.enemyData = JSON.parse(localStorage.getItem('enemyData'));
-        //如果不存在怪物数据则新建
-        if (!this.enemyData) {
-            this.enemyData = {
+        let that = this
+        //难度等级
+        let n = localStorage.getItem('hard')
+        if (!n){
+            localStorage.setItem('hard', '1')
+            setEnemyData(1)
+        } else {
+            setEnemyData(Number(n))
+        }
+        function setEnemyData(n){
+            that.enemyData = {
                 white: {
                     Level: 'white',
-                    MaxHp: '200',
-                    ATK: '5',
-                    AtkRate: '300',//攻速(多少毫秒攻击一次)
+                    MaxHp: Number((200 * n).toFixed(2)),
+                    ATK: Number((5 * n).toFixed(2)),
+                    AtkRate: Number((500 / n).toFixed(2)),//攻速(多少毫秒攻击一次)
                 },
                 blue: {
                     Level: 'blue',
-                    MaxHp: '300',
-                    ATK: '10',
+                    MaxHp: Number((300 * n).toFixed(2)),
+                    ATK: Number((10 * n).toFixed(2)),
                     chance: 0.3,//生成几率,实际为0.2 (0.3-0.1
-                    AtkRate: '500',
+                    AtkRate: Number((300 / n).toFixed(2)),
                 },
                 gold: {
                     Level: 'gold',
-                    MaxHp: '500',
-                    ATK: '15',
+                    MaxHp: Number((500 * n).toFixed(2)),
+                    ATK: Number((15 * n).toFixed(2)),
                     chance: 0.1,//生成几率c
-                    AtkRate: '200',
+                    AtkRate: Number((200 / n).toFixed(2)),
                 }
             }
-            localStorage.setItem('enemyData', JSON.stringify(this.enemyData))
+            window.enemyData = that.enemyData
+            console.log(that.enemyData);
         }
-        console.log(this.enemyData);
+
     }
 }

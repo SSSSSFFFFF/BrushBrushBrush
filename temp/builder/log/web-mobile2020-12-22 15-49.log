@@ -2606,3 +2606,193 @@
 2020-12-30 18-06-debug:"Process: heapTotal 285.86MB heapUsed 248.82MB rss 331.33MB"
 2020-12-30 18-06-debug:"// ---- web-mobile:(onAfterBuild) success ----"
 2020-12-30 18-06-debug:"web-mobile:(onAfterBuild) √"0.8124999999999997
+2020-12-30 18-10-debug:"Start build task, options:"{"buildPath":"./build","compressTexture":true,"debug":false,"experimentalEraseModules":false,"mainBundleCompressionType":"merge_dep","mainBundleIsRemote":false,"md5Cache":true,"mergeStartScene":false,"name":"BrushBrushBrush","outputName":"web-mobile","packAutoAtlas":true,"packages":{"web-mobile":{"orientation":"auto","polyfills":{"asyncFunctions":true}}},"platform":"web-mobile","replaceSplashScreen":false,"scenes":[{"url":"db://assets/scene.scene","uuid":"d971fa4a-60bb-4d68-a37b-8906ec766765"}],"sourceMaps":false,"startScene":"d971fa4a-60bb-4d68-a37b-8906ec766765"}
+2020-12-30 18-10-debug:"Query all assets info in project"
+2020-12-30 18-10-debug:"BuildAssetLibrary initialized with asset 241!"
+2020-12-30 18-10-debug:"  Number of all scripts: 4"
+2020-12-30 18-10-debug:"  Number of all scenes: 1"
+2020-12-30 18-10-debug:"  Number of other assets: 255"
+2020-12-30 18-10-debug:"web-mobile:(onAfterInit) start..."0
+2020-12-30 18-10-debug:"// ---- web-mobile:(onAfterInit) ----"
+2020-12-30 18-10-debug:"Process: heapTotal 248.60MB heapUsed 217.20MB rss 351.49MB"
+2020-12-30 18-10-debug:"// ---- web-mobile:(onAfterInit) success ----"
+2020-12-30 18-10-debug:"web-mobile:(onAfterInit) √"0.0375
+2020-12-30 18-10-log:"// ---- 加载刷新项目脚本 ----"
+2020-12-30 18-10-debug:"加载刷新项目脚本 start"0.0375
+2020-12-30 18-10-debug:"Process: heapTotal 248.60MB heapUsed 217.60MB rss 351.51MB"
+2020-12-30 18-10-debug:"reload all scripts."
+2020-12-30 18-10-debug:"[[Executor]] Module \"builtin:cc\" loaded."
+2020-12-30 18-10-debug:"Load module registry for project:///assets/ts/Battle.js at D:\\project\\BrushBrushBrush\\library\\d5\\d56f6a1d-6e38-470a-a534-b2dce0e7cb31\\editor.js"
+2020-12-30 18-10-debug:"Load module registry for project:///assets/ts/UI.js at D:\\project\\BrushBrushBrush\\library\\42\\4211efcf-445c-466b-83a5-558c88cb8ade\\editor.js"
+2020-12-30 18-10-debug:"Load module registry for project:///assets/ts/Enemy.js at D:\\project\\BrushBrushBrush\\library\\8e\\8ec2139e-795c-447d-b735-0a00d820cbd9\\editor.js"
+2020-12-30 18-10-debug:"Load module registry for project:///assets/ts/Player.js at D:\\project\\BrushBrushBrush\\library\\f4\\f4710e78-09d1-4d3a-8631-19c566842f48\\editor.js"
+2020-12-30 18-10-debug:"[[Executor]] Importing \"project:///assets/ts/Battle.js\"..."
+2020-12-30 18-10-debug:"[[Executor]] Register Player"
+2020-12-30 18-10-debug:"[[Executor]] Module \"builtin:cce.code-quality.cr\" loaded."
+2020-12-30 18-10-debug:"[[Executor]] Module \"project:///assets/ts/Player.js\" loaded."
+2020-12-30 18-10-debug:"[[Executor]] Module \"project:///assets/ts/Enemy.js\" loaded."
+2020-12-30 18-10-debug:"[[Executor]] Register Enemy"
+2020-12-30 18-10-debug:"[[Executor]] Register Battle"
+2020-12-30 18-10-debug:"[[Executor]] Importing \"project:///assets/ts/Enemy.js\"..."
+2020-12-30 18-10-debug:"[[Executor]] Module \"project:///assets/ts/Battle.js\" loaded."
+2020-12-30 18-10-debug:"[[Executor]] Importing \"project:///assets/ts/UI.js\"..."
+2020-12-30 18-10-debug:"[[Executor]] Importing \"project:///assets/ts/Player.js\"..."
+2020-12-30 18-10-debug:"[[Executor]] Module \"project:///assets/ts/UI.js\" loaded."
+2020-12-30 18-10-debug:"[[Executor]] Register UI"
+2020-12-30 18-10-debug:"加载刷新项目脚本 √"0.06607142857142857
+2020-12-30 18-10-debug:"查询 asset bundle start"0.06607142857142857
+2020-12-30 18-10-log:"// ---- 查询 asset bundle ----"
+2020-12-30 18-10-debug:"Process: heapTotal 249.60MB heapUsed 221.67MB rss 353.07MB"
+2020-12-30 18-10-debug:"查询 asset bundle √"0.09464285714285714
+2020-12-30 18-10-debug:"查询使用的资源以及资源包配置 start"0.09464285714285714
+2020-12-30 18-10-log:"// ---- 查询使用的资源以及资源包配置 ----"
+2020-12-30 18-10-debug:"Process: heapTotal 249.60MB heapUsed 221.78MB rss 353.08MB"
+2020-12-30 18-10-debug:"getRawInstance""db://assets/scene.scene"
+2020-12-30 18-10-debug:"Number of scenes: 1"
+2020-12-30 18-10-debug:"Number of asset bundle: 1"
+2020-12-30 18-10-debug:"查询使用的资源以及资源包配置 √"0.1232142857142857
+2020-12-30 18-10-log:"// ---- 整理脚本分组与脚本数据 ----"
+2020-12-30 18-10-debug:"整理脚本分组与脚本数据 start"0.1232142857142857
+2020-12-30 18-10-debug:"Process: heapTotal 249.60MB heapUsed 223.41MB rss 353.33MB"
+2020-12-30 18-10-debug:"Number of assets: 20"
+2020-12-30 18-10-debug:"sort script group..."
+2020-12-30 18-10-debug:"整理脚本分组与脚本数据 √"0.15178571428571427
+2020-12-30 18-10-debug:"整理纹理压缩任务 start"0.15178571428571427
+2020-12-30 18-10-debug:"Process: heapTotal 249.60MB heapUsed 223.45MB rss 353.32MB"
+2020-12-30 18-10-log:"// ---- 整理纹理压缩任务 ----"
+2020-12-30 18-10-debug:"Number of image-compress task: 0"
+2020-12-30 18-10-debug:"整理纹理压缩任务 √"0.18035714285714285
+2020-12-30 18-10-debug:"初步划分 json 合并分组 start"0.18035714285714285
+2020-12-30 18-10-debug:"Process: heapTotal 249.60MB heapUsed 223.59MB rss 353.34MB"
+2020-12-30 18-10-debug:"Number of json group: 1"
+2020-12-30 18-10-log:"// ---- 初步划分 json 合并分组 ----"
+2020-12-30 18-10-debug:"初步划分 json 合并分组 √"0.20892857142857144
+2020-12-30 18-10-log:"// ---- 整理合并压缩 Texture2D 的 json 数据 ----"
+2020-12-30 18-10-debug:"Process: heapTotal 249.60MB heapUsed 223.66MB rss 353.34MB"
+2020-12-30 18-10-debug:"整理合并压缩 Texture2D 的 json 数据 start"0.20892857142857144
+2020-12-30 18-10-debug:"整理合并压缩 Texture2D 的 json 数据 √"0.23750000000000002
+2020-12-30 18-10-log:"// ----  ----"
+2020-12-30 18-10-debug:" start"0.23750000000000002
+2020-12-30 18-10-debug:"Process: heapTotal 249.60MB heapUsed 223.70MB rss 353.37MB"
+2020-12-30 18-10-warn:"Browserslist: caniuse-lite is outdated. Please run:\nnpx browserslist@latest --update-db"
+2020-12-30 18-10-debug:"打包脚本"0.23750000000000002
+2020-12-30 18-10-debug:"Process: heapTotal 298.19MB heapUsed 267.82MB rss 405.00MB"
+2020-12-30 18-10-warn:"Browserslist: caniuse-lite is outdated. Please run the following command: `npx browserslist --update-db`"
+2020-12-30 18-10-debug:"Copy externalScripts success!"
+2020-12-30 18-10-debug:"打包脚本√"0.23750000000000002
+2020-12-30 18-10-debug:"构建引擎"0.23750000000000002
+2020-12-30 18-10-debug:"Process: heapTotal 307.86MB heapUsed 217.94MB rss 412.21MB"
+2020-12-30 18-11-debug:"Use cache engine: {link(C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\CocosCreator\\3.0.0-preview.1\\builder\\engine\\5a88eaad967e648171f1e5e775e43059)}"
+2020-12-30 18-11-debug:{"debug":false,"sourceMaps":false,"includeModules":["base","gfx-webgl","gfx-webgl2","ui","particle","physics-cannon","physics-framework","physics-2d-box2d","physics-2d-framework","intersection-2d","particle-2d","audio","video","webview","tween","terrain","tiled-map","spine","dragonbones"],"engineVersion":"3.0.0-preview.1","platform":"HTML5","md5Map":[],"engineName":"cocos-js","useCache":true,"split":false,"ammoJsWasm":"fallback","entry":"C:\\CocosDashboard_1.0.11\\resources\\.editors\\Creator\\3.0.0-Preview.1\\resources\\resources\\3d\\engine"}
+2020-12-30 18-11-debug:"构建引擎√"0.23750000000000002
+2020-12-30 18-11-debug:" √"0.29464285714285715
+2020-12-30 18-11-debug:"构建自动图集 start"0.29464285714285715
+2020-12-30 18-11-debug:"Process: heapTotal 307.86MB heapUsed 222.57MB rss 413.01MB"
+2020-12-30 18-11-debug:"构建自动图集 √"0.3517857142857143
+2020-12-30 18-11-log:"// ---- 构建自动图集 ----"
+2020-12-30 18-11-debug:"图片拷贝压缩任务 start"0.3517857142857143
+2020-12-30 18-11-debug:"Process: heapTotal 307.86MB heapUsed 222.63MB rss 413.01MB"
+2020-12-30 18-11-log:"// ---- 图片拷贝压缩任务 ----"
+2020-12-30 18-11-debug:"图片拷贝压缩任务 √"0.4089285714285715
+2020-12-30 18-11-debug:"将资源拷贝到指定位置 start"0.4089285714285715
+2020-12-30 18-11-log:"// ---- 将资源拷贝到指定位置 ----"
+2020-12-30 18-11-debug:"Process: heapTotal 307.86MB heapUsed 222.66MB rss 413.01MB"
+2020-12-30 18-11-debug:"Asset Bundle(main) handle assets: 20"
+2020-12-30 18-11-debug:"将资源拷贝到指定位置 √"0.46607142857142864
+2020-12-30 18-11-debug:"将分组后的 json 与散文件构建到指定位置 start"0.46607142857142864
+2020-12-30 18-11-log:"// ---- 将分组后的 json 与散文件构建到指定位置 ----"
+2020-12-30 18-11-debug:"Process: heapTotal 307.86MB heapUsed 222.98MB rss 413.01MB"
+2020-12-30 18-11-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://assets/anim/toleft.anim)})"
+2020-12-30 18-11-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://internal/default_ui/default_sprite_splash.png/spriteFrame)})"
+2020-12-30 18-11-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://assets/anim/PlayerToRight.anim)})"
+2020-12-30 18-11-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://internal/default_ui/default_btn_pressed.png/spriteFrame)})"
+2020-12-30 18-11-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://assets/anim/toright.anim)})"
+2020-12-30 18-11-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://internal/default_ui/default_btn_normal.png/spriteFrame)})"
+2020-12-30 18-11-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://internal/default_ui/default_btn_disabled.png/spriteFrame)})"
+2020-12-30 18-11-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://assets/prefab/Model.prefab)})"
+2020-12-30 18-11-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://assets/prefab/Enemy.prefab)})"
+2020-12-30 18-11-debug:"getRawInstance""db://assets/scene.scene"
+2020-12-30 18-11-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://assets/anim/PlayerToLeft.anim)})"
+2020-12-30 18-11-debug:"Json group(build-task/json) compile success，json number: 6"
+2020-12-30 18-11-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://internal/default_ui/default_sprite_splash.png/texture)})"
+2020-12-30 18-11-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://internal/default_ui/default_btn_pressed.png/texture)})"
+2020-12-30 18-11-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://internal/default_ui/default_btn_normal.png/texture)})"
+2020-12-30 18-11-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://internal/default_ui/default_btn_disabled.png/texture)})"
+2020-12-30 18-11-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://internal/default_renderpipeline/builtin-forward.rpp)})"
+2020-12-30 18-11-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://internal/default_ui/default_btn_disabled.png)})"
+2020-12-30 18-11-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://internal/default_ui/default_btn_pressed.png)})"
+2020-12-30 18-11-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://internal/default_ui/default_sprite_splash.png)})"
+2020-12-30 18-11-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://internal/default_ui/default_btn_normal.png)})"
+2020-12-30 18-11-debug:"将分组后的 json 与散文件构建到指定位置 √"0.5232142857142857
+2020-12-30 18-11-debug:"Process: heapTotal 307.86MB heapUsed 227.07MB rss 413.12MB"
+2020-12-30 18-11-debug:"压缩 zip bundle start"0.5232142857142857
+2020-12-30 18-11-debug:"压缩 zip bundle √"0.5803571428571429
+2020-12-30 18-11-log:"// ---- 压缩 zip bundle ----"
+2020-12-30 18-11-debug:"Process: heapTotal 307.86MB heapUsed 227.10MB rss 413.13MB"
+2020-12-30 18-11-log:"// ---- 给所有的资源加上 md5 后缀 ----"
+2020-12-30 18-11-debug:"给所有的资源加上 md5 后缀 start"0.5803571428571429
+2020-12-30 18-11-debug:"add suffix to assets(4) success!"
+2020-12-30 18-11-debug:"给所有的资源加上 md5 后缀 √"0.6375000000000001
+2020-12-30 18-11-debug:"初始化 settings 与 config start"0.6375000000000001
+2020-12-30 18-11-log:"// ---- 初始化 settings 与 config ----"
+2020-12-30 18-11-debug:"Process: heapTotal 307.86MB heapUsed 227.92MB rss 413.16MB"
+2020-12-30 18-11-debug:"初始化 settings 与 config √"0.6430555555555556
+2020-12-30 18-11-debug:"tasks.settings.macro字段未在编辑器多语言内定义"
+2020-12-30 18-11-debug:"tasks.settings.macro start"0.6430555555555556
+2020-12-30 18-11-debug:"Process: heapTotal 307.86MB heapUsed 227.97MB rss 413.16MB"
+2020-12-30 18-11-log:"// ---- tasks.settings.macro ----"
+2020-12-30 18-11-debug:"tasks.settings.macro √"0.6486111111111111
+2020-12-30 18-11-debug:"使用缓存 settings start"0.6486111111111111
+2020-12-30 18-11-log:"// ---- 使用缓存 settings ----"
+2020-12-30 18-11-debug:"Process: heapTotal 307.86MB heapUsed 228.05MB rss 413.15MB"
+2020-12-30 18-11-debug:"使用缓存 settings √"0.6541666666666667
+2020-12-30 18-11-debug:"custom joint texture layouts start"0.6541666666666667
+2020-12-30 18-11-log:"// ---- custom joint texture layouts ----"
+2020-12-30 18-11-debug:"Process: heapTotal 307.86MB heapUsed 228.16MB rss 413.16MB"
+2020-12-30 18-11-debug:"custom joint texture layouts √"0.6597222222222222
+2020-12-30 18-11-debug:"custom joint physics start"0.6597222222222222
+2020-12-30 18-11-log:"// ---- custom joint physics ----"
+2020-12-30 18-11-debug:"Process: heapTotal 307.86MB heapUsed 228.19MB rss 413.16MB"
+2020-12-30 18-11-debug:"custom joint physics √"0.6652777777777777
+2020-12-30 18-11-debug:"填充脚本数据到 settings start"0.6652777777777777
+2020-12-30 18-11-log:"// ---- 填充脚本数据到 settings ----"
+2020-12-30 18-11-debug:"Process: heapTotal 307.86MB heapUsed 228.23MB rss 413.16MB"
+2020-12-30 18-11-debug:"填充脚本数据到 settings √"0.6708333333333333
+2020-12-30 18-11-debug:"填充场景数据到 settings start"0.6708333333333333
+2020-12-30 18-11-log:"// ---- 填充场景数据到 settings ----"
+2020-12-30 18-11-debug:"填充场景数据到 settings √"0.6763888888888888
+2020-12-30 18-11-debug:"Process: heapTotal 307.86MB heapUsed 228.26MB rss 413.16MB"
+2020-12-30 18-11-debug:"整理 assets 分组，生成 packedAssets 以及 rawAssets 数据 start"0.6763888888888888
+2020-12-30 18-11-log:"// ---- 整理 assets 分组，生成 packedAssets 以及 rawAssets 数据 ----"
+2020-12-30 18-11-debug:"Process: heapTotal 307.86MB heapUsed 228.30MB rss 413.16MB"
+2020-12-30 18-11-debug:"从 suffixMap 生成 md5AssetsMap 到 settings start"0.6819444444444444
+2020-12-30 18-11-log:"// ---- 从 suffixMap 生成 md5AssetsMap 到 settings ----"
+2020-12-30 18-11-debug:"Process: heapTotal 307.86MB heapUsed 228.33MB rss 413.16MB"
+2020-12-30 18-11-debug:"从 suffixMap 生成 md5AssetsMap 到 settings √"0.6874999999999999
+2020-12-30 18-11-debug:"整理 assets 分组，生成 packedAssets 以及 rawAssets 数据 √"0.6819444444444444
+2020-12-30 18-11-debug:"// ---- web-mobile:(onBeforeCompressSettings) ----"
+2020-12-30 18-11-debug:"// ---- web-mobile:(onBeforeCompressSettings) success ----"
+2020-12-30 18-11-debug:"Process: heapTotal 307.86MB heapUsed 228.37MB rss 413.16MB"
+2020-12-30 18-11-debug:"web-mobile:(onBeforeCompressSettings) √"0.7249999999999999
+2020-12-30 18-11-debug:"压缩 config.json 与 settings.js start"0.7249999999999999
+2020-12-30 18-11-log:"// ---- 保存 config.json ----"
+2020-12-30 18-11-debug:"压缩 config.json 与 settings.js √"0.7374999999999998
+2020-12-30 18-11-debug:"保存 config.json start"0.7374999999999998
+2020-12-30 18-11-debug:"Process: heapTotal 307.86MB heapUsed 228.50MB rss 413.16MB"
+2020-12-30 18-11-debug:"保存 config.json √"0.7499999999999998
+2020-12-30 18-11-debug:"保存 settings.json start"0.7499999999999998
+2020-12-30 18-11-log:"// ---- 保存 settings.json ----"
+2020-12-30 18-11-debug:"Process: heapTotal 307.86MB heapUsed 228.57MB rss 413.59MB"
+2020-12-30 18-11-debug:"保存 settings.json √"0.7624999999999997
+2020-12-30 18-11-debug:"整理静态模板文件 start"0.7624999999999997
+2020-12-30 18-11-log:"// ---- 整理静态模板文件 ----"
+2020-12-30 18-11-debug:"Process: heapTotal 307.86MB heapUsed 228.73MB rss 413.58MB"
+2020-12-30 18-11-debug:"整理静态模板文件 √"0.7749999999999997
+2020-12-30 18-11-debug:"web-mobile:(onAfterBuild) start..."0.7749999999999997
+2020-12-30 18-11-debug:"// ---- web-mobile:(onAfterBuild) ----"
+2020-12-30 18-11-debug:"Process: heapTotal 308.36MB heapUsed 224.32MB rss 413.91MB"
+2020-12-30 18-11-debug:"// ---- web-mobile:(onAfterBuild) success ----"
+2020-12-30 18-11-debug:"web-mobile:(onAfterBuild) √"0.8124999999999997
+2020-12-30 18-11-debug:"web-mobile:(onBeforeCompressSettings) start..."0.6874999999999999
+2020-12-30 18-11-debug:"Process: heapTotal 307.86MB heapUsed 228.41MB rss 413.16MB"
+2020-12-30 18-11-log:"// ---- 压缩 config.json 与 settings.js ----"

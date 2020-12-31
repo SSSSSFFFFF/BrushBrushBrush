@@ -31,8 +31,9 @@ export class Enemy extends Component {
         }
     }
     giveEnemyProperty(){
-        this.enemyData = JSON.parse(localStorage.getItem('enemyData'));
+        this.enemyData = window.enemyData;
         let enemyData = this.enemyData
+        console.log(enemyData);
         //当前生成的怪物属性
         let enemyNow 
         if (Math.random() < enemyData.gold.chance) {
