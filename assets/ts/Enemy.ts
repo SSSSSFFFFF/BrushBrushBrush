@@ -5,7 +5,7 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
-import { _decorator, Component, Node, find, Label } from 'cc';
+import { _decorator, Component, Node, find, Label, ProgressBar } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('Enemy')
@@ -14,6 +14,7 @@ export class Enemy extends Component {
     enemyData: any;
     //当前怪物
     enemyNow: any;
+    playerData: any;
     onLoad () {
         //随机出怪物属性
         this.giveEnemyProperty()
@@ -22,19 +23,39 @@ export class Enemy extends Component {
         this.updateEnemyData();
     }
     updateEnemyData(){
-
         let enemyNow = this.enemyNow
-        let thisLabel = find("Info", this.node)
-        thisLabel.getComponent(Label).string = enemyNow.Level + '\n血量：' + enemyNow.MaxHp + '\n攻击力：' + enemyNow.ATK
-        if (enemyNow.MaxHp <= 0){
-            thisLabel.getComponent(Label).string = 'lose'
-            enemyNow.status = 'lose'
-            
-            if(Math.random() <)
-            // let playerData = JSON.parse(localStorage.getItem('playerData'));
-            // playerData.bag.push('')
-            
+        if (enemyNow.status != 'lose'){
+            let thisLabel = find("Info", this.node)
+            //战斗失败
+            if (enemyNow.MaxHp <= 0) {
+                this.playerData = JSON.parse(localStorage.getItem('playerData'));
+                thisLabel.getComponent(Label).string = 'lose'
+                enemyNow.status = 'lose'
+                switch (enemyNow.Level) {
+                    case 'white':
+                        this.playerData.progress = this.playerData.progress + 1
+                        break;
+                    case 'blue':
+                        this.playerData.progress = this.playerData.progress + 2
+                        break;
+                    case 'gold':
+                        this.playerData.progress = this.playerData.progress + 4
+                        break;
+                    default:
+                        break;
+                }
+                for (let i = 0; i < enemyNow.spoils.length; i++) {
+                    if (Math.random() <= enemyNow.spoils[i].chance) {
+                        this.playerData.bag.push(enemyNow.spoils[i].name)
+                        thisLabel.getComponent(Label).string += '\n' + enemyNow.spoils[i].name
+                    }
+                }
+                localStorage.setItem('playerData', JSON.stringify(this.playerData))
+            } else {
+                thisLabel.getComponent(Label).string = enemyNow.Level + '\n血量：' + enemyNow.MaxHp + '\n攻击力：' + enemyNow.ATK
+            }
         }
+
     }
     giveEnemyProperty(){
         this.enemyData = JSON.parse(JSON.stringify(globalThis.enemyData))

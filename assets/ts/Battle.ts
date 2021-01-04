@@ -5,7 +5,7 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
-import { _decorator, Component, Button, find, Prefab, instantiate, Label, RichText, __private } from 'cc';
+import { _decorator, Component, Button, find, Prefab, instantiate, Label, RichText, __private, ProgressBar } from 'cc';
 const { ccclass, property, integer, float, boolean, string, type } = _decorator;
 import { Player } from "./Player";
 import { Enemy } from "./Enemy";
@@ -35,6 +35,8 @@ export class Battle extends Component {
         this.playerData = find("Canvas/Player").getComponent(Player).playerData;
         //加载敌人数据
         this.getenemyData()
+        //变更进度条
+        this.updateProgress();
     }
     start() {
 
@@ -49,6 +51,11 @@ export class Battle extends Component {
         find("Canvas/Battle/ScrollView/view/content/Button").on(Button.EventType.CLICK, this.Button, this)
         find("Canvas/Battle/ScrollView/view/content/Button-001").on(Button.EventType.CLICK, this.Button, this)
         find("Canvas/Battle/ScrollView/view/content/Button-002").on(Button.EventType.CLICK, this.Button, this)
+    }
+
+    updateProgress() {
+        find("Canvas/Battle/ProgressBar").getComponent(ProgressBar).progress = Number((this.playerData.progress / 100).toFixed(2))
+        find("Canvas/Battle/ProgressLabel").getComponent(Label).string = this.playerData.progress + "%"
     }
     Button(button) {
         let that = this;
@@ -120,6 +127,7 @@ export class Battle extends Component {
         this.gameStart()
     }
     gameStart() {
+        let that = this
         let time = 3
         let countdown = null
         countdown = setInterval(() => {
@@ -134,6 +142,10 @@ export class Battle extends Component {
         // find("Canvas/Battle/Button").getComponent(Button).interactable = false
         this.gameStartTime = setTimeout(() => {
             find("Canvas/Battle/Result").getComponent(Label).string = "战斗开始"
+            console.log(that.playerData.progress);
+            if(that.playerData.progress >= 100) {
+                console.log('boss');
+            }
             let num = this.num
             for (let i = 0; i < num; i++) {
                 let node = instantiate(this.enemyPre);
@@ -197,6 +209,18 @@ export class Battle extends Component {
         }
         function setEnemyData(n){
             that.enemyData = {
+                boss:{
+                    Level: 'boss',
+                    MaxHp: Number((400 * n).toFixed(2)),
+                    ATK: Number((8 * n).toFixed(2)),
+                    AtkRate: Number((500 / n).toFixed(2)),//攻速(多少毫秒攻击一次)
+                    spoils: [
+                        {
+                            name: '白银',
+                            chance: 1
+                        }
+                    ]
+                },
                 white: {
                     Level: 'white',
                     MaxHp: Number((200 * n).toFixed(2)),
@@ -216,7 +240,7 @@ export class Battle extends Component {
                 blue: {
                     Level: 'blue',
                     MaxHp: Number((300 * n).toFixed(2)),
-                    ATK: Number((10 * n).toFixed(2)),
+                    ATK: Number((6 * n).toFixed(2)),
                     chance: 0.3,//生成几率,实际为0.2 (0.3-0.1
                     AtkRate: Number((300 / n).toFixed(2)),
                     spoils: [
@@ -232,8 +256,8 @@ export class Battle extends Component {
                 },
                 gold: {
                     Level: 'gold',
-                    MaxHp: Number((500 * n).toFixed(2)),
-                    ATK: Number((15 * n).toFixed(2)),
+                    MaxHp: Number((350 * n).toFixed(2)),
+                    ATK: Number((7 * n).toFixed(2)),
                     chance: 0.1,//生成几率c
                     AtkRate: Number((200 / n).toFixed(2)),
                     spoils: [
@@ -251,6 +275,5 @@ export class Battle extends Component {
             globalThis.enemyData = that.enemyData
             console.log(that.enemyData);
         }
-
     }
 }

@@ -3,7 +3,7 @@
   "compilerOptions": {
     "target": "ES2015",
     "module": "ES2015",
-    "strict": true,
+    "strict": false,
     "types": [
       "./temp/declarations/cc",
       "./temp/declarations/jsb",
