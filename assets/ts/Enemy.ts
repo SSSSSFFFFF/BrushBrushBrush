@@ -44,6 +44,8 @@ export class Enemy extends Component {
                     default:
                         break;
                 }
+                //变更进度条
+                this.updateProgress();
                 for (let i = 0; i < enemyNow.spoils.length; i++) {
                     if (Math.random() <= enemyNow.spoils[i].chance) {
                         this.playerData.bag.push(enemyNow.spoils[i].name)
@@ -56,6 +58,11 @@ export class Enemy extends Component {
             }
         }
 
+    }
+
+    updateProgress() {
+        find("Canvas/Battle/ProgressBar").getComponent(ProgressBar).progress = Number((this.playerData.progress / 100).toFixed(2))
+        find("Canvas/Battle/ProgressLabel").getComponent(Label).string = this.playerData.progress + "%"
     }
     giveEnemyProperty(){
         this.enemyData = JSON.parse(JSON.stringify(globalThis.enemyData))

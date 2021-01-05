@@ -38,6 +38,13 @@ export class Battle extends Component {
         //变更进度条
         this.updateProgress();
     }
+
+    update(deltaTime: number) {
+        //判断结果
+        this.checkResult()
+        //检查展示角色状态
+        this.checkPlayer()
+    }
     start() {
 
         // 玩家攻击
@@ -75,12 +82,6 @@ export class Battle extends Component {
         }
         //加载敌人数据
         this.getenemyData()
-    }
-    update(deltaTime: number) {
-        //判断结果
-        this.checkResult()
-        //检查展示角色状态
-        this.checkPlayer()
     }
     checkPlayer(){
         let playerData = this.playerData

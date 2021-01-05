@@ -86,7 +86,7 @@ export class Player extends Component {
                     HPS:0,
                 },
                 bag:[],
-                progress:0,
+                progress:99,
             }
             localStorage.setItem('playerData', JSON.stringify(this.playerData))
         }
