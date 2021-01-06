@@ -5,9 +5,10 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
-import { _decorator, Component, Node, find, Label, ProgressBar } from 'cc';
+import { _decorator, Component, Node, find, Label, ProgressBar, cclegacy } from 'cc';
 import { Player } from './Player';
 import { Battle } from './Battle';
+import { Bag } from './Bag';
 const { ccclass, property } = _decorator;
 
 @ccclass('Enemy')
@@ -51,24 +52,26 @@ export class Enemy extends Component {
                 find("Canvas/Battle").getComponent(Battle).updateProgress();
                 for (let i = 0; i < enemyNow.spoils.length; i++) {
                     if (Math.random() <= enemyNow.spoils[i].chance) {
+                        let isInBag:boolean = false
                         for (let j = 0; j < this.playerData.bag.length; j++) {
-                            let ele = this.playerData.bag[j];
-                            console.log(ele, enemyNow.spoils[i]);
-                            if (ele.name == enemyNow.spoils[i].name) {
-                                ele.num = Number(ele.num) + 1
-                            } else {
-                                let good = {
-                                    name: enemyNow.spoils[i].name,
-                                    num: 1
-                                }
-                                this.playerData.bag.push(good)
+                            const ele = this.playerData.bag[j];
+                            if(ele.name == enemyNow.spoils[i].name){
+                                isInBag = true
+                                ele.num++
                             }
                         }
-                           
+                        //如果没有在包里找到则新增
+                        if(!isInBag){
+                            let good = {
+                                name: enemyNow.spoils[i].name,
+                                num: 1
+                            }
+                            this.playerData.bag.push(good)   
+                        }
+                        find("Canvas/Bag").getComponent(Bag).updateGood()
                         thisLabel.getComponent(Label).string += '\n' + enemyNow.spoils[i].name
                     }
                 }
-                console.log(this.playerData);
                 localStorage.setItem('playerData', JSON.stringify(this.playerData))
 
             } else {
@@ -81,7 +84,6 @@ export class Enemy extends Component {
     giveEnemyProperty(){
         this.enemyData = JSON.parse(JSON.stringify(globalThis.enemyData))
         let enemyData = this.enemyData
-        console.log(enemyData);
         //当前生成的怪物属性
         let enemyNow 
         if (this.playerData.progress >= 100){

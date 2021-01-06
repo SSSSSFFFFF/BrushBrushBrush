@@ -68,7 +68,6 @@ export class Battle extends Component {
     }
     Button(button) {
         let that = this;
-        console.log(button.node.name);
         switch (button.node.name) {
             case 'Button':
                 localStorage.setItem('hard', '1')
@@ -168,7 +167,6 @@ export class Battle extends Component {
                     node.parent = find("Canvas/Battle/Enemies");
                     this.enemyNodes.push(node)
                 }
-                console.log(this.enemyNodes);
                 //战斗过程
                 this.battleProcess(num);
             }
@@ -237,6 +235,10 @@ export class Battle extends Component {
                         {
                             name: '白银',
                             chance: 1
+                        },
+                        {
+                            name:'黄金',
+                            chance: 1
                         }
                     ]
                 },
@@ -252,7 +254,7 @@ export class Battle extends Component {
                         }, 
                         {
                             name: '黄铜',
-                            chance: 0.2
+                            chance: 0.3
                         },
                     ]
                 },
@@ -269,7 +271,7 @@ export class Battle extends Component {
                         },
                         {
                             name: '黄铜',
-                            chance: 0.3
+                            chance: 0.5
                         },
                     ]
                 },
@@ -286,13 +288,12 @@ export class Battle extends Component {
                         },
                         {
                             name: '黄铜',
-                            chance: 0.4
+                            chance: 0.6
                         },
                     ]
                 }
             }
             globalThis.enemyData = that.enemyData
-            console.log(that.enemyData);
         }
     }
 }

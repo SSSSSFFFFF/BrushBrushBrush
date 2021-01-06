@@ -46,7 +46,7 @@ export class UI extends Component {
                 if (checkFrom()) {
                 } else {
                     find("Canvas/Player").getComponent(Animation).play("fromLeft");
-                    find(checkNode(this.lastIndex)).getComponent(Animation).play("toRight");
+                    find(checkNode(this.lastIndex)).getComponent(Animation).play("toright");
                 }
                 break;
             case 1:
@@ -54,10 +54,10 @@ export class UI extends Component {
                 find("Canvas/UI/toBag").getComponent(Button).interactable = false
                 if (checkFrom()) {
                     find("Canvas/Bag").getComponent(Animation).play("fromRight");
-                    find(checkNode(this.lastIndex)).getComponent(Animation).play("toLeft");
+                    find(checkNode(this.lastIndex)).getComponent(Animation).play("toleft");
                 } else {
                     find("Canvas/Bag").getComponent(Animation).play("fromLeft");
-                    find(checkNode(this.lastIndex)).getComponent(Animation).play("toRight");
+                    find(checkNode(this.lastIndex)).getComponent(Animation).play("toright");
                 }
                 break;
             case 2:
@@ -65,7 +65,7 @@ export class UI extends Component {
                 find("Canvas/UI/toBattle").getComponent(Button).interactable = false
                 if (checkFrom()) {
                     find("Canvas/Battle").getComponent(Animation).play("fromRight");
-                    find(checkNode(this.lastIndex)).getComponent(Animation).play("toLeft");
+                    find(checkNode(this.lastIndex)).getComponent(Animation).play("toleft");
                 } else {
                    
                 }

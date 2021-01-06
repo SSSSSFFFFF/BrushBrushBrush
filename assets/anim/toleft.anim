@@ -1,6 +1,6 @@
 {
   "__type__": "cc.AnimationClip",
-  "_name": "toLeft",
+  "_name": "toleft",
   "_objFlags": 0,
   "_native": "",
   "sample": 60,
@@ -41,5 +41,5 @@
     }
   ],
   "_commonTargets": [],
-  "_hash": 1799706790
+  "_hash": 695405259
 }
