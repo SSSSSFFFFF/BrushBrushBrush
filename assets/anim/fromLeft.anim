@@ -1,6 +1,6 @@
 {
   "__type__": "cc.AnimationClip",
-  "_name": "PlayerToRight",
+  "_name": "showFromLeft",
   "_objFlags": 0,
   "_native": "",
   "sample": 60,
@@ -41,5 +41,5 @@
     }
   ],
   "_commonTargets": [],
-  "_hash": 1792593774
+  "_hash": 1243632741
 }

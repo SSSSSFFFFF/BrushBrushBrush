@@ -2,12 +2,12 @@
   "ver": "1.0.11",
   "importer": "animation-clip",
   "imported": true,
-  "uuid": "914c0c0a-6554-4daf-b88a-29f429747c6b",
+  "uuid": "432f7a38-22d2-4f9f-a1c3-386ceb1960ac",
   "files": [
     ".json"
   ],
   "subMetas": {},
   "userData": {
-    "name": "toright"
+    "name": "toRight"
   }
 }

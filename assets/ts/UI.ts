@@ -10,33 +10,96 @@ const { ccclass, property } = _decorator;
 
 @ccclass('UI')
 export class UI extends Component {
-    /* class member could be defined like this */
-    // dummy = '';
-
-    /* use `property` decorator if your want the member to be serializable */
-    // @property
-    // serializableDummy = 0;
+    //上一个页面index
+    lastIndex: number;
 
     start () {
-        this.node.getChildByName("toBattle").getComponent(Button).interactable = false
+        this.lastIndex = 2
         this.node.getChildByName("toPlayer").on(Button.EventType.CLICK, this.toPlayer, this)
+        this.node.getChildByName("toBag").on(Button.EventType.CLICK, this.toBag, this)
         this.node.getChildByName("toBattle").on(Button.EventType.CLICK, this.toBattle, this)
     }
     toPlayer() {
-        find("Canvas/UI/toPlayer").getComponent(Sprite).color  = new Color('#ffffff')
-        find("Canvas/UI/toBattle").getComponent(Sprite).color = new Color('#646464')
-        find("Canvas/Battle").getComponent(Animation).play("toright");
-        find("Canvas/Player").getComponent(Animation).play("PlayerToRight");
-        this.node.getChildByName("toPlayer").getComponent(Button).interactable = false
-        this.node.getChildByName("toBattle").getComponent(Button).interactable = true
+        this.changeIndex(0)
+        this.lastIndex = 0
+    }
+    toBag () {
+        this.changeIndex(1)
+        this.lastIndex = 1
     }
     toBattle() {
+        this.changeIndex(2)
+        this.lastIndex = 2
+    }
+    changeIndex(num) {
+        let that = this;
         find("Canvas/UI/toPlayer").getComponent(Sprite).color = new Color('#646464')
-        find("Canvas/UI/toBattle").getComponent(Sprite).color = new Color('#ffffff')
-        find("Canvas/Battle").getComponent(Animation).play("toleft");
-        find("Canvas/Player").getComponent(Animation).play("PlayerToLeft");
-        this.node.getChildByName("toPlayer").getComponent(Button).interactable = true
-        this.node.getChildByName("toBattle").getComponent(Button).interactable = false
+        find("Canvas/UI/toBag").getComponent(Sprite).color = new Color('#646464')
+        find("Canvas/UI/toBattle").getComponent(Sprite).color = new Color('#646464')
+        find("Canvas/UI/toPlayer").getComponent(Button).interactable = true
+        find("Canvas/UI/toBag").getComponent(Button).interactable = true
+        find("Canvas/UI/toBattle").getComponent(Button).interactable = true
+        switch (num) {
+            case 0:
+                find("Canvas/UI/toPlayer").getComponent(Sprite).color = new Color('#ffffff')
+                find("Canvas/UI/toPlayer").getComponent(Button).interactable = false
+                if (checkFrom()) {
+                } else {
+                    find("Canvas/Player").getComponent(Animation).play("fromLeft");
+                    find(checkNode(this.lastIndex)).getComponent(Animation).play("toRight");
+                }
+                break;
+            case 1:
+                find("Canvas/UI/toBag").getComponent(Sprite).color = new Color('#ffffff')
+                find("Canvas/UI/toBag").getComponent(Button).interactable = false
+                if (checkFrom()) {
+                    find("Canvas/Bag").getComponent(Animation).play("fromRight");
+                    find(checkNode(this.lastIndex)).getComponent(Animation).play("toLeft");
+                } else {
+                    find("Canvas/Bag").getComponent(Animation).play("fromLeft");
+                    find(checkNode(this.lastIndex)).getComponent(Animation).play("toRight");
+                }
+                break;
+            case 2:
+                find("Canvas/UI/toBattle").getComponent(Sprite).color = new Color('#ffffff')
+                find("Canvas/UI/toBattle").getComponent(Button).interactable = false
+                if (checkFrom()) {
+                    find("Canvas/Battle").getComponent(Animation).play("fromRight");
+                    find(checkNode(this.lastIndex)).getComponent(Animation).play("toLeft");
+                } else {
+                   
+                }
+                break;
+            default:
+                break;
+        }
+        //index是否从左边来，本体从右边来
+        function checkFrom() {
+            let result
+            if (num > that.lastIndex) {
+                result =  true
+            } else {
+                result = false
+            }
+            return result
+        }
+        function checkNode(num) {
+            let result
+            switch (num) {
+                case 0:
+                    result = "Canvas/Player"   
+                    break;
+                case 1:
+                    result = "Canvas/Bag"
+                    break;
+                case 2:
+                    result = "Canvas/Battle"
+                    break;
+                default:
+                    break;
+            }
+            return result
+        }
     }
     // update (deltaTime: number) {
     //     // Your update function goes here.

@@ -1,6 +1,6 @@
 {
   "__type__": "cc.AnimationClip",
-  "_name": "toleft",
+  "_name": "toLeft",
   "_objFlags": 0,
   "_native": "",
   "sample": 60,
@@ -25,13 +25,13 @@
         "values": [
           {
             "__type__": "cc.Vec3",
-            "x": 640,
+            "x": 0,
             "y": 0,
             "z": 0
           },
           {
             "__type__": "cc.Vec3",
-            "x": 0,
+            "x": -640,
             "y": 0,
             "z": 0
           }
@@ -41,5 +41,5 @@
     }
   ],
   "_commonTargets": [],
-  "_hash": 4285378385
+  "_hash": 1799706790
 }

@@ -30,7 +30,9 @@ export class Battle extends Component {
     playerTime:any;
     gameStartTime: number;
     enemyNodesIndex: number = 0;
+    boss: boolean;
     onLoad() {
+
         //加载玩家数据
         this.playerData = find("Canvas/Player").getComponent(Player).playerData;
         //加载敌人数据
@@ -61,8 +63,8 @@ export class Battle extends Component {
     }
 
     updateProgress() {
-        find("Canvas/Battle/ProgressBar").getComponent(ProgressBar).progress = Number((this.playerData.progress / 100).toFixed(2))
-        find("Canvas/Battle/ProgressLabel").getComponent(Label).string = this.playerData.progress + "%"
+        find("Canvas/Battle/ProgressBar").getComponent(ProgressBar).progress = Number((this.playerData.progress >= 100 ? 100 : this.playerData.progress / 100).toFixed(2))
+        find("Canvas/Battle/ProgressLabel").getComponent(Label).string = ((this.playerData.progress >= 100) ? "100" : this.playerData.progress) + "%"
     }
     Button(button) {
         let that = this;
@@ -91,16 +93,23 @@ export class Battle extends Component {
         let that = this;
         if (this.result){
             find("Canvas/Battle/Result").getComponent(Label).string = '失败'
+            this.playerData.progress = Number((this.playerData.progress * 0.8).toFixed())
+            //变更进度条
+            find("Canvas/Battle").getComponent(Battle).updateProgress();
             //战斗结束
             that.battleEnd()
         }
-        if (that.enemyNodes.length > 0 && that.enemyNodes[this.num - 1].getComponent(Enemy).enemyNow.status == 'lose') {
-
+        if (that.enemyNodes.length > 0 && that.enemyNodes[that.enemyNodes.length - 1].getComponent(Enemy).enemyNow.status == 'lose') {
             find("Canvas/Battle/Result").getComponent(Label).string = '成功'
+            if (this.boss){
+                this.playerData.progress = 0
+                //变更进度条
+                find("Canvas/Battle").getComponent(Battle).updateProgress();
+            }
+            this.boss = false
             //战斗结束
             that.battleEnd()
         }
-
     } 
     battleEnd() {
         console.log("战斗结束");
@@ -126,6 +135,7 @@ export class Battle extends Component {
 
     startBtn(){
         this.gameStart()
+        find("Canvas/Battle/Button").destroy();
     }
     gameStart() {
         let that = this
@@ -143,19 +153,26 @@ export class Battle extends Component {
         // find("Canvas/Battle/Button").getComponent(Button).interactable = false
         this.gameStartTime = setTimeout(() => {
             find("Canvas/Battle/Result").getComponent(Label).string = "战斗开始"
-            console.log(that.playerData.progress);
-            if(that.playerData.progress >= 100) {
-                console.log('boss');
-            }
-            let num = this.num
-            for (let i = 0; i < num; i++) {
+            if (this.playerData.progress >= 100) {
+                //boss
+                this.boss = true
                 let node = instantiate(this.enemyPre);
                 node.parent = find("Canvas/Battle/Enemies");
                 this.enemyNodes.push(node)
+                this.battleProcess(1);
+            } else {
+                //小怪
+                let num = this.num
+                for (let i = 0; i < num; i++) {
+                    let node = instantiate(this.enemyPre);
+                    node.parent = find("Canvas/Battle/Enemies");
+                    this.enemyNodes.push(node)
+                }
+                console.log(this.enemyNodes);
+                //战斗过程
+                this.battleProcess(num);
             }
-            console.log(this.enemyNodes);
-            //战斗过程
-            this.battleProcess(num);
+
         }, 4000);
     }
     battleProcess(num){
@@ -164,6 +181,7 @@ export class Battle extends Component {
         //怪物攻击
         for (let i = 0; i < num; i++) {
             let enemyNow = this.enemyNodes[i].getComponent(Enemy).enemyNow
+            console.log(enemyNow);
             this.time[i] = setInterval(() => {
                 //显示受到攻击
                 find("Canvas/Battle/Player/Status").getComponent(RichText).string = '-' + Number(enemyNow.ATK).toFixed()
@@ -213,7 +231,7 @@ export class Battle extends Component {
                 boss:{
                     Level: 'boss',
                     MaxHp: Number((400 * n).toFixed(2)),
-                    ATK: Number((8 * n).toFixed(2)),
+                    ATK: Number((88 * n).toFixed(2)),
                     AtkRate: Number((500 / n).toFixed(2)),//攻速(多少毫秒攻击一次)
                     spoils: [
                         {
