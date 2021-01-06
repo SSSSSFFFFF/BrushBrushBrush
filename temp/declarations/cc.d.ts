@@ -1,5 +1,5 @@
 
-/// <reference path="C:\CocosDashboard_1.0.11\resources\.editors\Creator\3.0.0-Preview.1\resources\resources\3d\engine\bin\.declarations\cc.d.ts"/>
+/// <reference path="D:\CocosDashboard\resources\.editors\Creator\3.0.0-Preview.1\resources\resources\3d\engine\bin\.declarations\cc.d.ts"/>
 
 /**
  * @deprecated Global variable `cc` was dropped since 3.0. Use ES6 module syntax to import Cocos Creator APIs.
