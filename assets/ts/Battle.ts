@@ -34,6 +34,7 @@ export class Battle extends Component {
     cd1: number;
     cd1Time: number;
     playerAtkFlag = true;
+    playerAtkTime: number;
     onLoad() {
 
         //加载玩家数据
@@ -225,18 +226,20 @@ export class Battle extends Component {
     }
     playerAtk() {
         let that = this
+        clearTimeout(this.playerAtkTime)
         if (this.playerAtkFlag){
             atack()
             this.playerAtkFlag = false
-            setTimeout(() => {
-                that.playerAtkFlag = true
+            this.playerAtkTime =  setTimeout(() => {
+                this.playerAtkFlag = true
             }, that.playerData.AtkRate);
         }
 
         that.playerTime = setInterval(() => {
+            that.playerAtkFlag = true
             atack()
         }, that.playerData.AtkRate)
-        
+
         function atack(){
             console.log("atack");
             let i = that.enemyNodesIndex;
