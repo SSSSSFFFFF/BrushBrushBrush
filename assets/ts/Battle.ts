@@ -5,7 +5,7 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
-import { _decorator, Component, Button, find, Prefab, instantiate, Label, RichText, __private, ProgressBar } from 'cc';
+import {Node, _decorator, Component, Button, find, Prefab, instantiate, Label, RichText, __private, ProgressBar } from 'cc';
 const { ccclass, property, integer, float, boolean, string, type } = _decorator;
 import { Player } from "./Player";
 import { Enemy } from "./Enemy";
@@ -31,6 +31,9 @@ export class Battle extends Component {
     gameStartTime: number;
     enemyNodesIndex: number = 0;
     boss: boolean;
+    cd1: number;
+    cd1Time: number;
+    playerAtkFlag = true;
     onLoad() {
 
         //加载玩家数据
@@ -54,6 +57,10 @@ export class Battle extends Component {
         // 玩家停止攻击
         find("Canvas/Battle/SpriteSplash").on('touch-end', this.playerNormalAtkStop, this)
 
+        // 技能1
+        find("Canvas/Battle/skill1").on(Node.EventType.TOUCH_START, this.playerSkill1, this)
+
+        //开始
         find("Canvas/Battle/Button").on('click', this.startBtn, this)
 
         //初步调整难度
@@ -61,7 +68,6 @@ export class Battle extends Component {
         find("Canvas/Battle/ScrollView/view/content/Button-001").on(Button.EventType.CLICK, this.Button, this)
         find("Canvas/Battle/ScrollView/view/content/Button-002").on(Button.EventType.CLICK, this.Button, this)
     }
-
     updateProgress() {
         find("Canvas/Battle/ProgressBar").getComponent(ProgressBar).progress = Number((this.playerData.progress >= 100 ? 100 : this.playerData.progress / 100).toFixed(2))
         find("Canvas/Battle/ProgressLabel").getComponent(Label).string = ((this.playerData.progress >= 100) ? "100" : this.playerData.progress) + "%"
@@ -179,7 +185,6 @@ export class Battle extends Component {
         //怪物攻击
         for (let i = 0; i < num; i++) {
             let enemyNow = this.enemyNodes[i].getComponent(Enemy).enemyNow
-            console.log(enemyNow);
             this.time[i] = setInterval(() => {
                 //显示受到攻击
                 find("Canvas/Battle/Player/Status").getComponent(RichText).string = '-' + Number(enemyNow.ATK).toFixed()
@@ -191,28 +196,61 @@ export class Battle extends Component {
             }, enemyNow.AtkRate)
         }
     }
+    playerSkill1() {
+        let that = this;
+        // 技能1
+        find("Canvas/Battle/skill1").off(Node.EventType.TOUCH_START)
+        this.cd1 = 10;
+        this.cd1Time = setInterval(()=>{
+            find("Canvas/Battle/skill1/Label").getComponent(Label).string = (this.cd1).toFixed();
+            this.cd1 = this.cd1 - 1
+            if (this.cd1 <= 0) {
+                clearInterval(this.cd1Time)
+                // 技能1
+                find("Canvas/Battle/skill1").on(Node.EventType.TOUCH_START, this.playerSkill1, this)
+            }
+        },1000)
+        for (let i = 0; i < that.enemyNodes.length; i++) {
+            let enemyNow = that.enemyNodes[i].getComponent(Enemy).enemyNow
+            enemyNow.MaxHp = Number((enemyNow.MaxHp - 100).toFixed())
+            find("RichText", that.enemyNodes[i]).getComponent(RichText).string = '-' + Number(100).toFixed()
+        }
+    }
     playerNormalAtk(){
         this.playerAtk()
         // this.playerAtk(0)
     }
     playerNormalAtkStop(){
-        clearTimeout(this.playerTime)
+        clearInterval(this.playerTime)
     }
     playerAtk() {
         let that = this
+        if (this.playerAtkFlag){
+            atack()
+            this.playerAtkFlag = false
+            setTimeout(() => {
+                that.playerAtkFlag = true
+            }, that.playerData.AtkRate);
+        }
+
         that.playerTime = setInterval(() => {
-            let i = this.enemyNodesIndex;
+            atack()
+        }, that.playerData.AtkRate)
+        
+        function atack(){
+            console.log("atack");
+            let i = that.enemyNodesIndex;
             if (that.enemyNodes.length > 0) {
                 let enemyNow = that.enemyNodes[i].getComponent(Enemy).enemyNow
                 enemyNow.MaxHp = Number((enemyNow.MaxHp - that.playerData.ATK).toFixed())
                 find("RichText", that.enemyNodes[i]).getComponent(RichText).string = '-' + Number(that.playerData.ATK).toFixed()
                 if (enemyNow.status == 'lose' && i < that.num - 1) {
-                    clearTimeout(that.playerTime)
-                    this.enemyNodesIndex = i + 1
+                    clearInterval(that.playerTime)
+                    that.enemyNodesIndex = i + 1
                     that.playerAtk()
                 }
             } 
-        }, that.playerData.AtkRate)
+        }
     }
     getenemyData() {
         let that = this
@@ -224,6 +262,136 @@ export class Battle extends Component {
         } else {
             setEnemyData(Number(n))
         }
+        //设置材料掉率
+        function setSpoils(level){
+            let result:any[];
+            switch (level) {
+                case 'boss':
+                    result = [
+                        {
+                            name: '白银',
+                            chance: 1
+                        },
+                        {
+                            name: '黄金',
+                            chance: 1
+                        }
+                    ]
+                    break;
+                case 'white':
+                    result = [
+                        {
+                            name: '黑铁',
+                            chance: 0.7
+                        },
+                        {
+                            name: '黄铜',
+                            chance: 0.3
+                        },
+                    ]
+                    break;
+                case 'blue':
+                    result = [
+                        {
+                            name: '黑铁',
+                            chance: 0.8
+                        },
+                        {
+                            name: '黄铜',
+                            chance: 0.5
+                        },
+                    ]
+                    break;
+                case 'gold':
+                    result = [
+                        {
+                            name: '黑铁',
+                            chance: 0.9
+                        },
+                        {
+                            name: '黄铜',
+                            chance: 0.7
+                        },
+                    ]
+                    break;
+                default:
+                    break;
+            }
+            return result
+        }
+        //设置装备掉率(怪物等级，当前难度)
+        function setEquip(level,n) {
+            let result: any[];
+            switch (level) {
+                case 'boss':
+                    result = [
+                        {
+                            name: '橙装',
+                            ATK: Number((10 * n).toFixed(2)),
+                            type: '武器',
+                            chance: 1
+                        }
+                    ]
+                    break;
+                case 'white':
+                    result = [
+                        {
+                            name: '白装',
+                            ATK: Number((2 * n).toFixed(2)),
+                            type: '武器',
+                            chance: 0.8
+                        },
+                        {
+                            name: '蓝装',
+                            ATK: Number((5 * n).toFixed(2)),
+                            type: '衣服',
+                            chance: 0.2
+                        },
+                    ]
+                    break;   
+                case 'blue':
+                    result = [
+                        {
+                            name: '白装',
+                            ATK: Number((2 * n).toFixed(2)),
+                            type: '衣服',
+                            chance: 0.5
+                        },
+                        {
+                            name: '蓝装',
+                            ATK: Number((5 * n).toFixed(2)),
+                            type: '衣服',
+                            chance: 0.5
+                        },
+                    ]
+                    break;  
+                case 'gold':
+                    result = [
+                        {
+                            name: '白装',
+                            ATK: Number((2 * n).toFixed(2)),
+                            type: '武器',
+                            chance: 0.4
+                        },
+                        {
+                            name: '蓝装',
+                            ATK: Number((5 * n).toFixed(2)),
+                            type: '武器',
+                            chance: 0.7
+                        },
+                        {
+                            name: '橙装',
+                            ATK: Number((10 * n).toFixed(2)),
+                            type: '武器',
+                            chance: 0.2
+                        }
+                    ]
+                    break;   
+                default:
+                    break;
+            }
+            return result
+        }
         function setEnemyData(n){
             that.enemyData = {
                 boss:{
@@ -231,32 +399,16 @@ export class Battle extends Component {
                     MaxHp: Number((400 * n).toFixed(2)),
                     ATK: Number((88 * n).toFixed(2)),
                     AtkRate: Number((500 / n).toFixed(2)),//攻速(多少毫秒攻击一次)
-                    spoils: [
-                        {
-                            name: '白银',
-                            chance: 1
-                        },
-                        {
-                            name:'黄金',
-                            chance: 1
-                        }
-                    ]
+                    spoils: setSpoils('boss'),
+                    equipment: setEquip('boss',n)
                 },
                 white: {
                     Level: 'white',
                     MaxHp: Number((200 * n).toFixed(2)),
                     ATK: Number((5 * n).toFixed(2)),
                     AtkRate: Number((500 / n).toFixed(2)),//攻速(多少毫秒攻击一次)
-                    spoils:[
-                        {
-                            name: '黑铁',
-                            chance:0.5
-                        }, 
-                        {
-                            name: '黄铜',
-                            chance: 0.3
-                        },
-                    ]
+                    spoils: setSpoils('white'),
+                    equipment: setEquip('white', n)
                 },
                 blue: {
                     Level: 'blue',
@@ -264,16 +416,8 @@ export class Battle extends Component {
                     ATK: Number((6 * n).toFixed(2)),
                     chance: 0.3,//生成几率,实际为0.2 (0.3-0.1
                     AtkRate: Number((300 / n).toFixed(2)),
-                    spoils: [
-                        {
-                            name: '黑铁',
-                            chance: 0.6
-                        },
-                        {
-                            name: '黄铜',
-                            chance: 0.5
-                        },
-                    ]
+                    spoils: setSpoils('blue'),
+                    equipment: setEquip('blue', n)
                 },
                 gold: {
                     Level: 'gold',
@@ -281,16 +425,8 @@ export class Battle extends Component {
                     ATK: Number((7 * n).toFixed(2)),
                     chance: 0.1,//生成几率c
                     AtkRate: Number((200 / n).toFixed(2)),
-                    spoils: [
-                        {
-                            name: '黑铁',
-                            chance: 0.7
-                        },
-                        {
-                            name: '黄铜',
-                            chance: 0.6
-                        },
-                    ]
+                    spoils: setSpoils('gold'),
+                    equipment: setEquip('gold', n)
                 }
             }
             globalThis.enemyData = that.enemyData

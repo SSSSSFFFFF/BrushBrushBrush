@@ -1,0 +1,53 @@
+[
+    1,
+    [
+        "9f2QDdIhtPiY8s+6NCQ8g1@6c48a"
+    ],
+    [
+        "_textureSource"
+    ],
+    [
+        "cc.SpriteFrame"
+    ],
+    0,
+    [
+        {
+            "name": "default_progressbar_bg",
+            "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 60,
+                "height": 15
+            },
+            "offset": {
+                "x": 0,
+                "y": 0
+            },
+            "originalSize": {
+                "width": 60,
+                "height": 15
+            },
+            "rotated": false,
+            "capInsets": [
+                10,
+                4,
+                10,
+                4
+            ],
+            "texture": "9fd900dd-221b-4f89-8f2c-fba34243c835@6c48a"
+        }
+    ],
+    [
+        0
+    ],
+    0,
+    [
+        0
+    ],
+    [
+        0
+    ],
+    [
+        0
+    ]
+]

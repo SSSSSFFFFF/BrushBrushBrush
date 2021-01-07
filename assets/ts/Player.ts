@@ -15,9 +15,15 @@ export class Player extends Component {
     //弹窗
     @property({ type: Prefab })
     private Model: Prefab = null;
+
+    @property({ type: Prefab })
+    private pop: Prefab = null;
+
     onLoad(){
         //获取用户信息
         this.getPlayerData();
+        //穿上装备
+        this.setEquipment();
     }
     start() {
         //清除存档
@@ -71,7 +77,7 @@ export class Player extends Component {
                 MaxHp: 1000,//最大生命值
                 EXP: 0,//经验值  
                 ATK: 40,//攻击力
-                AtkRate: 500,//攻速(多少毫秒攻击一次)
+                AtkRate: 300,//攻速(多少毫秒攻击一次)
                 Crit: 0.1,//暴击率
                 CritD: 1.5,//暴击伤害
                 Level: 1,//等级
@@ -87,6 +93,18 @@ export class Player extends Component {
                 },
                 bag:[],
                 progress:99,
+                equip:{
+                    weapon:{},
+                    clothes:{},
+                },
+                skill:[
+                    {
+                        name:'aoe',
+                        description:'攻击全体',
+                        ATK:100,
+                        cd:10
+                    }
+                ]
             }
             localStorage.setItem('playerData', JSON.stringify(this.playerData))
         }
@@ -100,6 +118,42 @@ export class Player extends Component {
     //回复血量
     reset(HP) {
         this.playerData.HP = HP
+    }
+    setEquipment(){
+        for (const key in this.playerData.equip) {
+            let value = this.playerData.equip[key]
+            this.changeEquipment(value)
+        }
+    }
+    changeEquipment(good){
+        let that = this;
+        switch (good.type) {
+            case '武器':
+                this.playerData.equip.weapon = good
+                equipPop("SpriteSplash")
+                break;
+            case '衣服':
+                this.playerData.equip.clothes = good
+                equipPop("SpriteSplash-001")
+                break;
+            default:
+                break;
+        }
+        function equipPop(name){
+            find("Canvas/Player/"+name).off(Node.EventType.TOUCH_START);
+            that.playerData.ATK = that.playerData.ATK + good.ATK
+            find("Canvas/Player/"+name+"/Label").getComponent(Label).string = good.name;
+            find("Canvas/Player/"+name).on(Node.EventType.TOUCH_START, (event) => {
+                //弹窗
+                let node = instantiate(that.pop);
+                node.parent = find("Canvas/Player")
+                find("Label", node).getComponent(Label).string = '物品名：' + good.name + '\n攻击力：' + good.ATK + '\n类别：' + good.type
+                find("Button", node).on(Button.EventType.CLICK, (event) => {
+                    node.destroy();
+                }, that)
+            }, that);
+        }
+        this.setPlayerData(this.playerData)
     }
     updateUserInfo() {
         let playerData = this.playerData

@@ -14,9 +14,10 @@ export class UI extends Component {
     lastIndex: number;
 
     start () {
-        this.lastIndex = 2
+        this.lastIndex = 3
         this.node.getChildByName("toPlayer").on(Button.EventType.CLICK, this.toPlayer, this)
         this.node.getChildByName("toBag").on(Button.EventType.CLICK, this.toBag, this)
+        this.node.getChildByName("toSkill").on(Button.EventType.CLICK, this.toSkill, this)
         this.node.getChildByName("toBattle").on(Button.EventType.CLICK, this.toBattle, this)
     }
     toPlayer() {
@@ -27,17 +28,23 @@ export class UI extends Component {
         this.changeIndex(1)
         this.lastIndex = 1
     }
-    toBattle() {
+    toSkill(){
         this.changeIndex(2)
         this.lastIndex = 2
+    }
+    toBattle() {
+        this.changeIndex(3)
+        this.lastIndex = 3
     }
     changeIndex(num) {
         let that = this;
         find("Canvas/UI/toPlayer").getComponent(Sprite).color = new Color('#646464')
         find("Canvas/UI/toBag").getComponent(Sprite).color = new Color('#646464')
+        find("Canvas/UI/toSkill").getComponent(Sprite).color = new Color('#646464')
         find("Canvas/UI/toBattle").getComponent(Sprite).color = new Color('#646464')
         find("Canvas/UI/toPlayer").getComponent(Button).interactable = true
         find("Canvas/UI/toBag").getComponent(Button).interactable = true
+        find("Canvas/UI/toSkill").getComponent(Button).interactable = true
         find("Canvas/UI/toBattle").getComponent(Button).interactable = true
         switch (num) {
             case 0:
@@ -61,6 +68,17 @@ export class UI extends Component {
                 }
                 break;
             case 2:
+                find("Canvas/UI/toSkill").getComponent(Sprite).color = new Color('#ffffff')
+                find("Canvas/UI/toSkill").getComponent(Button).interactable = false
+                if (checkFrom()) {
+                    find("Canvas/Skills").getComponent(Animation).play("fromRight");
+                    find(checkNode(this.lastIndex)).getComponent(Animation).play("toleft");
+                } else {
+                    find("Canvas/Skills").getComponent(Animation).play("fromLeft");
+                    find(checkNode(this.lastIndex)).getComponent(Animation).play("toright");
+                }
+                break;
+            case 3:
                 find("Canvas/UI/toBattle").getComponent(Sprite).color = new Color('#ffffff')
                 find("Canvas/UI/toBattle").getComponent(Button).interactable = false
                 if (checkFrom()) {
@@ -93,6 +111,9 @@ export class UI extends Component {
                     result = "Canvas/Bag"
                     break;
                 case 2:
+                    result = "Canvas/Skills"
+                    break;
+                case 3:
                     result = "Canvas/Battle"
                     break;
                 default:

@@ -10,7 +10,6 @@ import { Player } from './Player';
 import { Battle } from './Battle';
 import { Bag } from './Bag';
 const { ccclass, property } = _decorator;
-
 @ccclass('Enemy')
 export class Enemy extends Component {
     //怪物表
@@ -50,6 +49,7 @@ export class Enemy extends Component {
                 }
                 //变更进度条
                 find("Canvas/Battle").getComponent(Battle).updateProgress();
+                //掉落战利品
                 for (let i = 0; i < enemyNow.spoils.length; i++) {
                     if (Math.random() <= enemyNow.spoils[i].chance) {
                         let isInBag:boolean = false
@@ -58,7 +58,8 @@ export class Enemy extends Component {
                             if(ele.name == enemyNow.spoils[i].name){
                                 isInBag = true
                                 ele.num++
-                            }
+                                find("Canvas/Bag").getComponent(Bag).updateGood(j, ele)
+                            } 
                         }
                         //如果没有在包里找到则新增
                         if(!isInBag){
@@ -67,11 +68,25 @@ export class Enemy extends Component {
                                 num: 1
                             }
                             this.playerData.bag.push(good)   
+                            find("Canvas/Bag").getComponent(Bag).setBag(good)
                         }
-                        find("Canvas/Bag").getComponent(Bag).updateGood()
                         thisLabel.getComponent(Label).string += '\n' + enemyNow.spoils[i].name
                     }
                 }
+                //掉落装备
+                for (let i = 0; i < enemyNow.equipment.length; i++) {
+                    if (Math.random() <= enemyNow.equipment[i].chance) {
+                        let good = {
+                            name: enemyNow.equipment[i].name,
+                            ATK: enemyNow.equipment[i].ATK,
+                            type: enemyNow.equipment[i].type,
+                        }
+                        this.playerData.bag.push(good)
+                        find("Canvas/Bag").getComponent(Bag).setBag(good)
+                        thisLabel.getComponent(Label).string += '\n' + enemyNow.equipment[i].name
+                    }
+                }
+                //背包存档
                 localStorage.setItem('playerData', JSON.stringify(this.playerData))
 
             } else {
