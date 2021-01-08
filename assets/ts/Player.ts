@@ -74,6 +74,7 @@ export class Player extends Component {
         //如果不存在用户数据则新建
         if (!this.playerData) {
             this.playerData = {
+                nickName: '',
                 MaxHp: 1000,//最大生命值
                 EXP: 0,//经验值  
                 ATK: 40,//攻击力

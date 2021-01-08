@@ -33,8 +33,6 @@ export class Battle extends Component {
     boss: boolean;
     cd1: number;
     cd1Time: number;
-    playerAtkFlag = true;
-    playerAtkTime: number;
     onLoad() {
 
         //加载玩家数据
@@ -221,22 +219,15 @@ export class Battle extends Component {
         this.playerAtk()
         // this.playerAtk(0)
     }
+    
     playerNormalAtkStop(){
         clearInterval(this.playerTime)
     }
+
     playerAtk() {
         let that = this
-        clearTimeout(this.playerAtkTime)
-        if (this.playerAtkFlag){
-            atack()
-            this.playerAtkFlag = false
-            this.playerAtkTime =  setTimeout(() => {
-                this.playerAtkFlag = true
-            }, that.playerData.AtkRate);
-        }
 
         that.playerTime = setInterval(() => {
-            that.playerAtkFlag = true
             atack()
         }, that.playerData.AtkRate)
 

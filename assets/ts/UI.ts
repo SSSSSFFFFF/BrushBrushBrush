@@ -15,10 +15,10 @@ export class UI extends Component {
 
     start () {
         this.lastIndex = 3
-        this.node.getChildByName("toPlayer").on(Button.EventType.CLICK, this.toPlayer, this)
-        this.node.getChildByName("toBag").on(Button.EventType.CLICK, this.toBag, this)
-        this.node.getChildByName("toSkill").on(Button.EventType.CLICK, this.toSkill, this)
-        this.node.getChildByName("toBattle").on(Button.EventType.CLICK, this.toBattle, this)
+        find("Canvas/UI/Layout/toPlayer").on(Button.EventType.CLICK, this.toPlayer, this)
+        find("Canvas/UI/Layout/toBag").on(Button.EventType.CLICK, this.toBag, this)
+        find("Canvas/UI/Layout/toSkill").on(Button.EventType.CLICK, this.toSkill, this)
+        find("Canvas/UI/Layout/toBattle").on(Button.EventType.CLICK, this.toBattle, this)
     }
     toPlayer() {
         this.changeIndex(0)
@@ -38,18 +38,18 @@ export class UI extends Component {
     }
     changeIndex(num) {
         let that = this;
-        find("Canvas/UI/toPlayer").getComponent(Sprite).color = new Color('#646464')
-        find("Canvas/UI/toBag").getComponent(Sprite).color = new Color('#646464')
-        find("Canvas/UI/toSkill").getComponent(Sprite).color = new Color('#646464')
-        find("Canvas/UI/toBattle").getComponent(Sprite).color = new Color('#646464')
-        find("Canvas/UI/toPlayer").getComponent(Button).interactable = true
-        find("Canvas/UI/toBag").getComponent(Button).interactable = true
-        find("Canvas/UI/toSkill").getComponent(Button).interactable = true
-        find("Canvas/UI/toBattle").getComponent(Button).interactable = true
+        find("Canvas/UI/Layout/toPlayer").getComponent(Sprite).color = new Color('#646464')
+        find("Canvas/UI/Layout/toBag").getComponent(Sprite).color = new Color('#646464')
+        find("Canvas/UI/Layout/toSkill").getComponent(Sprite).color = new Color('#646464')
+        find("Canvas/UI/Layout/toBattle").getComponent(Sprite).color = new Color('#646464')
+        find("Canvas/UI/Layout/toPlayer").getComponent(Button).interactable = true
+        find("Canvas/UI/Layout/toBag").getComponent(Button).interactable = true
+        find("Canvas/UI/Layout/toSkill").getComponent(Button).interactable = true
+        find("Canvas/UI/Layout/toBattle").getComponent(Button).interactable = true
         switch (num) {
             case 0:
-                find("Canvas/UI/toPlayer").getComponent(Sprite).color = new Color('#ffffff')
-                find("Canvas/UI/toPlayer").getComponent(Button).interactable = false
+                find("Canvas/UI/Layout/toPlayer").getComponent(Sprite).color = new Color('#ffffff')
+                find("Canvas/UI/Layout/toPlayer").getComponent(Button).interactable = false
                 if (checkFrom()) {
                 } else {
                     find("Canvas/Player").getComponent(Animation).play("fromLeft");
@@ -57,8 +57,8 @@ export class UI extends Component {
                 }
                 break;
             case 1:
-                find("Canvas/UI/toBag").getComponent(Sprite).color = new Color('#ffffff')
-                find("Canvas/UI/toBag").getComponent(Button).interactable = false
+                find("Canvas/UI/Layout/toBag").getComponent(Sprite).color = new Color('#ffffff')
+                find("Canvas/UI/Layout/toBag").getComponent(Button).interactable = false
                 if (checkFrom()) {
                     find("Canvas/Bag").getComponent(Animation).play("fromRight");
                     find(checkNode(this.lastIndex)).getComponent(Animation).play("toleft");
@@ -68,8 +68,8 @@ export class UI extends Component {
                 }
                 break;
             case 2:
-                find("Canvas/UI/toSkill").getComponent(Sprite).color = new Color('#ffffff')
-                find("Canvas/UI/toSkill").getComponent(Button).interactable = false
+                find("Canvas/UI/Layout/toSkill").getComponent(Sprite).color = new Color('#ffffff')
+                find("Canvas/UI/Layout/toSkill").getComponent(Button).interactable = false
                 if (checkFrom()) {
                     find("Canvas/Skills").getComponent(Animation).play("fromRight");
                     find(checkNode(this.lastIndex)).getComponent(Animation).play("toleft");
@@ -79,8 +79,8 @@ export class UI extends Component {
                 }
                 break;
             case 3:
-                find("Canvas/UI/toBattle").getComponent(Sprite).color = new Color('#ffffff')
-                find("Canvas/UI/toBattle").getComponent(Button).interactable = false
+                find("Canvas/UI/Layout/toBattle").getComponent(Sprite).color = new Color('#ffffff')
+                find("Canvas/UI/Layout/toBattle").getComponent(Button).interactable = false
                 if (checkFrom()) {
                     find("Canvas/Battle").getComponent(Animation).play("fromRight");
                     find(checkNode(this.lastIndex)).getComponent(Animation).play("toleft");
