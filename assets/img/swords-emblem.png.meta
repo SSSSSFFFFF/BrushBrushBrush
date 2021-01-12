@@ -2,7 +2,7 @@
   "ver": "1.0.21",
   "importer": "image",
   "imported": true,
-  "uuid": "c9b34e29-0ea7-407d-8066-9c92c704973e",
+  "uuid": "5bc16c98-5e08-43fd-8054-4341d745ad0d",
   "files": [
     ".png",
     ".json"
@@ -10,8 +10,8 @@
   "subMetas": {
     "6c48a": {
       "importer": "texture",
-      "uuid": "c9b34e29-0ea7-407d-8066-9c92c704973e@6c48a",
-      "displayName": "battle-gear",
+      "uuid": "5bc16c98-5e08-43fd-8054-4341d745ad0d@6c48a",
+      "displayName": "swords-emblem",
       "id": "6c48a",
       "name": "texture",
       "userData": {
@@ -22,7 +22,7 @@
         "mipfilter": "none",
         "anisotropy": 1,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "c9b34e29-0ea7-407d-8066-9c92c704973e"
+        "imageUuidOrDatabaseUri": "5bc16c98-5e08-43fd-8054-4341d745ad0d"
       },
       "ver": "1.0.20",
       "imported": true,
@@ -33,20 +33,20 @@
     },
     "f9941": {
       "importer": "sprite-frame",
-      "uuid": "c9b34e29-0ea7-407d-8066-9c92c704973e@f9941",
-      "displayName": "battle-gear",
+      "uuid": "5bc16c98-5e08-43fd-8054-4341d745ad0d@f9941",
+      "displayName": "swords-emblem",
       "id": "f9941",
       "name": "spriteFrame",
       "userData": {
         "trimType": "auto",
         "trimThreshold": 1,
         "rotated": false,
-        "offsetX": 0,
-        "offsetY": 4.5,
-        "trimX": 49,
-        "trimY": 17,
-        "width": 414,
-        "height": 469,
+        "offsetX": 3,
+        "offsetY": 0.5,
+        "trimX": 48,
+        "trimY": 18,
+        "width": 422,
+        "height": 475,
         "rawWidth": 512,
         "rawHeight": 512,
         "borderTop": 0,
@@ -54,7 +54,7 @@
         "borderLeft": 0,
         "borderRight": 0,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "c9b34e29-0ea7-407d-8066-9c92c704973e@6c48a",
+        "imageUuidOrDatabaseUri": "5bc16c98-5e08-43fd-8054-4341d745ad0d@6c48a",
         "atlasUuid": ""
       },
       "ver": "1.0.8",
@@ -68,6 +68,6 @@
   "userData": {
     "hasAlpha": true,
     "type": "sprite-frame",
-    "redirect": "c9b34e29-0ea7-407d-8066-9c92c704973e@f9941"
+    "redirect": "5bc16c98-5e08-43fd-8054-4341d745ad0d@f9941"
   }
 }

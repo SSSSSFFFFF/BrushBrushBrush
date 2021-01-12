@@ -29,7 +29,7 @@ export class Enemy extends Component {
     updateEnemyData(){
         let enemyNow = this.enemyNow
         if (enemyNow.status != 'lose'){
-            let thisLabel = find("Info", this.node)
+            let thisLabel = find("Widget/Info", this.node)
             //战斗成功
             if (enemyNow.MaxHp <= 0) {
                 thisLabel.getComponent(Label).string = 'lose'

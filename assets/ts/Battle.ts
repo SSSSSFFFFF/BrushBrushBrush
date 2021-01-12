@@ -5,7 +5,7 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
-import {Node, _decorator, Component, Button, find, Prefab, instantiate, Label, RichText, __private, ProgressBar } from 'cc';
+import {Node, _decorator, Component, Button, find, Prefab, instantiate, Label, RichText, __private, ProgressBar,Animation } from 'cc';
 const { ccclass, property, integer, float, boolean, string, type } = _decorator;
 import { Player } from "./Player";
 import { Enemy } from "./Enemy";
@@ -14,6 +14,14 @@ import { Enemy } from "./Enemy";
 export class Battle extends Component {
     @property({ type: Prefab })
     private enemyPre: Prefab = null;
+
+
+    @property({ type: Prefab })
+    private playerStatus: Prefab = null;
+
+    @property({ type: Prefab })
+    private enemyStatus: Prefab = null;
+
     // 怪物数据
     enemyData: any;
     // 玩家数据
@@ -21,7 +29,7 @@ export class Battle extends Component {
     //怪物节点
     enemyNodes: any[] = [];
     //怪物生成数量
-    num: number = 3;
+    num: number = 2;
     // 战斗结果
     result: string;
     // 怪物攻击定时器
@@ -186,8 +194,13 @@ export class Battle extends Component {
             let enemyNow = this.enemyNodes[i].getComponent(Enemy).enemyNow
             this.time[i] = setInterval(() => {
                 //显示受到攻击
-                find("Canvas/Battle/Player/Status").getComponent(RichText).string = '-' + Number(enemyNow.ATK).toFixed()
+                this.enemyNodes[i].getComponent(Animation).play("enemyAtack")
+                let node = instantiate(that.playerStatus);
+                node.parent = find("Canvas/Battle/Player")
+                node.getComponent(RichText).string = '-' + Number(enemyNow.ATK).toFixed()
                 this.playerData.HP = Number((this.playerData.HP - enemyNow.ATK).toFixed())
+                node.getComponent(Animation).play("atacked")
+
                 if (this.playerData.HP <= 0) {
                     this.playerData.HP = 0;
                     this.result = 'fail';
@@ -233,11 +246,16 @@ export class Battle extends Component {
 
         function atack(){
             console.log("atack");
+            find("Canvas/Battle/Player").getComponent(Animation).play("atack")
             let i = that.enemyNodesIndex;
             if (that.enemyNodes.length > 0) {
                 let enemyNow = that.enemyNodes[i].getComponent(Enemy).enemyNow
                 enemyNow.MaxHp = Number((enemyNow.MaxHp - that.playerData.ATK).toFixed())
-                find("RichText", that.enemyNodes[i]).getComponent(RichText).string = '-' + Number(that.playerData.ATK).toFixed()
+                let node = instantiate(that.enemyStatus);
+                node.parent = find("Widget", that.enemyNodes[i])
+                node.getComponent(RichText).string = '-' + Number(that.playerData.ATK).toFixed()
+                node.getComponent(Animation).play("atacked")
+                
                 if (enemyNow.status == 'lose' && i < that.num - 1) {
                     clearInterval(that.playerTime)
                     that.enemyNodesIndex = i + 1
@@ -392,7 +410,7 @@ export class Battle extends Component {
                     Level: 'boss',
                     MaxHp: Number((400 * n).toFixed(2)),
                     ATK: Number((88 * n).toFixed(2)),
-                    AtkRate: Number((500 / n).toFixed(2)),//攻速(多少毫秒攻击一次)
+                    AtkRate: Number((1000 / n).toFixed(2)),//攻速(多少毫秒攻击一次)
                     spoils: setSpoils('boss'),
                     equipment: setEquip('boss',n)
                 },
@@ -400,7 +418,7 @@ export class Battle extends Component {
                     Level: 'white',
                     MaxHp: Number((200 * n).toFixed(2)),
                     ATK: Number((5 * n).toFixed(2)),
-                    AtkRate: Number((500 / n).toFixed(2)),//攻速(多少毫秒攻击一次)
+                    AtkRate: Number((800 / n).toFixed(2)),//攻速(多少毫秒攻击一次)
                     spoils: setSpoils('white'),
                     equipment: setEquip('white', n)
                 },
@@ -409,7 +427,7 @@ export class Battle extends Component {
                     MaxHp: Number((300 * n).toFixed(2)),
                     ATK: Number((6 * n).toFixed(2)),
                     chance: 0.3,//生成几率,实际为0.2 (0.3-0.1
-                    AtkRate: Number((300 / n).toFixed(2)),
+                    AtkRate: Number((700 / n).toFixed(2)),
                     spoils: setSpoils('blue'),
                     equipment: setEquip('blue', n)
                 },
@@ -418,7 +436,7 @@ export class Battle extends Component {
                     MaxHp: Number((350 * n).toFixed(2)),
                     ATK: Number((7 * n).toFixed(2)),
                     chance: 0.1,//生成几率c
-                    AtkRate: Number((200 / n).toFixed(2)),
+                    AtkRate: Number((600 / n).toFixed(2)),
                     spoils: setSpoils('gold'),
                     equipment: setEquip('gold', n)
                 }
