@@ -1,0 +1,29 @@
+{
+	"folders": [
+		{
+			"name": "BrushBrushBrush",
+			"path": "BrushBrushBrush"
+		},
+		{
+			"name": "BrushNode",
+			"path": "BrushNode"
+		},
+		{
+			"name": "web-mobile",
+			"path": "..\\phpstudy\\PHPTutorial\\WWW\\extension\\2020\\sftest\\BRUSHBRUSHBRUSH\\web-mobile"
+		}
+	],
+	"settings": {},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"name": "Python: 当前文件",
+				"type": "python",
+				"request": "launch",
+				"program": "D:/phpstudy/PHPTutorial/WWW/person/demo/python-spider/beautifulsoup.py",
+			},
+		]
+		
+	}
+}
