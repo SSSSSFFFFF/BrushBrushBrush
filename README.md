@@ -1,3 +1,7 @@
 # BrushBrushBrush
 
-based on Cocos Creater 3.0
+Cocos Creater 3.0
+
+## todo list
+
+- 头部ui
