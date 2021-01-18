@@ -29,7 +29,7 @@ export class Bag extends Component {
     }
     onLoad(){
         //加载玩家数据
-        this.playerData = find("Canvas/Player").getComponent(Player).playerData;
+        this.playerData = find("Canvas").getComponent(Player).playerData;
         this.bag = this.playerData.bag;
         //加载背包
         for (let i = 0; i < this.bag.length; i++) {
@@ -60,7 +60,7 @@ export class Bag extends Component {
                 equipBtn.parent = node;
                 equipBtn.on(Button.EventType.CLICK, (event) => {
                     //装备
-                    find("Canvas/Player").getComponent(Player).changeEquipment(good)
+                    find("Canvas").getComponent(Player).changeEquipment(good)
                     node.destroy();
                 }, this)
             } else {

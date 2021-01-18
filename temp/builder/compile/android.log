@@ -1,0 +1,1 @@
+2021-1-18 13-55-debug:[compile]"native:(compile) start..."2021-1-18 13-55-debug:[compile]"// ---- native:(compile) ----"2021-1-18 13-55-error:[compile]"构建插件 native 的钩子函数 compile 执行失败，请检查插件的代码逻辑~"

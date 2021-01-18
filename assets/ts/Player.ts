@@ -6,10 +6,9 @@
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
 import { _decorator, Component, Node, find, Label, Button, Prefab, instantiate, director } from 'cc';
-const { ccclass, property,executionOrder } = _decorator;
+const { ccclass, property } = _decorator;
 
 @ccclass('Player')
-@executionOrder(-1)
 export class Player extends Component {
     callback: () => void;
     //当前用户信息
@@ -38,6 +37,8 @@ export class Player extends Component {
         this.updateUserInfo()
         //确保hp不超过最大生命值
         this.HP();
+        //升级
+        this.LevelUp();
     }
     
     HP(){
@@ -72,6 +73,7 @@ export class Player extends Component {
         }, this)
     }
     getPlayerData() {
+        let that = this
         this.playerData = JSON.parse(localStorage.getItem('playerData'));
         //如果不存在用户数据则新建
         if (!this.playerData) {
@@ -80,11 +82,11 @@ export class Player extends Component {
                 MaxHp: 1000,//最大生命值
                 EXP: 0,//经验值  
                 ATK: 40,//攻击力
-                AtkRate: 300,//攻速(多少毫秒攻击一次)
+                AtkRate: 500,//攻速(多少毫秒攻击一次)
                 Crit: 0.1,//暴击率
                 CritD: 1.5,//暴击伤害
                 Level: 1,//等级
-                LevelUpNeedExp:[0,5,20,50,100,'Max'],//升级所需经验
+                LevelUpNeedExp: that.levelUpNeedExp(1),//升级所需经验
                 Points:10, //天赋点
                 HPS:5.5,//秒回
                 addPoints: { //记录天赋添加的值
@@ -113,6 +115,10 @@ export class Player extends Component {
         }
         //创建临时血量
         this.playerData.HP = this.playerData.MaxHp
+    }
+    //升级所需经验
+    levelUpNeedExp(level){
+       return Number((5 * Math.pow(level, 0.6)).toFixed(0))
     }
     //存储用户信息
     setPlayerData(playerData) {
@@ -160,14 +166,27 @@ export class Player extends Component {
     }
     updateUserInfo() {
         let playerData = this.playerData
-        find("Info", this.node).getComponent(Label).string =
+        find("Player/Info", this.node).getComponent(Label).string =
             '\n等级：' + playerData.Level
             +'\n生命值：' + playerData.HP + '/' + playerData.MaxHp
             +'\n攻击力：' + playerData.ATK
-            +'\n经验值：' + playerData.EXP + '/' + playerData.LevelUpNeedExp[playerData.Level]
+            +'\n经验值：' + playerData.EXP + '/' + playerData.LevelUpNeedExp
         + '\n攻击速度：' + Number((Number(playerData.AtkRate)/1000).toFixed(2))*100 +'%'
         // + '\n暴击率：' + (playerData.Crit * 100).toFixed(2)+ '%'
         //     + '\n暴击伤害：' + (playerData.CritD * 100).toFixed(2) + '%'
         + '\n每秒恢复生命值：' + playerData.HPS+ '/s'
+    }
+    fixed(num,fix){
+        return Number(num.toFixed(fix))
+    }
+    LevelUp(){
+        let playerData = this.playerData
+        //升级
+        if (playerData.EXP >= playerData.LevelUpNeedExp) {
+            playerData.EXP = this.fixed((playerData.EXP - playerData.LevelUpNeedExp),0) 
+            playerData.Level = this.fixed((playerData.Level + 1),0) ;
+            playerData.LevelUpNeedExp = this.levelUpNeedExp(playerData.Level)
+            this.setPlayerData(playerData)
+        }
     }
 }

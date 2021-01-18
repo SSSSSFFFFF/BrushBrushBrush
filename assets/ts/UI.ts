@@ -1,10 +1,9 @@
 
-import { _decorator, Component, Node, find, Button,Animation, Label, color, Color, Sprite } from 'cc';
-const { ccclass, property, executionOrder  } = _decorator;
+import { _decorator, Component, Node, find, Button,Animation, Label, color, Color, Sprite, ProgressBar } from 'cc';
+const { ccclass, property  } = _decorator;
 import {Player} from './Player'
 
 @ccclass('UI')
-@executionOrder(1)
 export class UI extends Component {
     //上一个页面index
     lastIndex: number;
@@ -12,26 +11,25 @@ export class UI extends Component {
 
     onLoad() {
         //加载玩家数据
-        setTimeout(() => {
-            this.playerData = find("Canvas/Player").getComponent(Player).playerData;
-
-            console.log(this.playerData);
-        }, 1000);
+        this.playerData = find("Canvas").getComponent(Player).playerData;
         this.lastIndex = 3
         find("Canvas/UI/Layout/toPlayer").on(Button.EventType.CLICK, this.toPlayer, this)
         find("Canvas/UI/Layout/toBag").on(Button.EventType.CLICK, this.toBag, this)
         find("Canvas/UI/Layout/toSkill").on(Button.EventType.CLICK, this.toSkill, this)
         find("Canvas/UI/Layout/toBattle").on(Button.EventType.CLICK, this.toBattle, this)
-
-        this.updateHead();
     }
 
     update() {
+        this.updateHead();
     }
 
     updateHead() {
-        console.log(this.playerData);
-        find("Canvas/UI/Lv").getComponent(Label).string = this.playerData.Level
+        let playerData = this.playerData
+        find("Canvas/UI/Header/Lv").getComponent(Label).string = playerData.Level
+        find("Canvas/UI/Header/Hp/Label").getComponent(Label).string = playerData.HP + '/' + playerData.MaxHp
+        find("Canvas/UI/Header/Hp").getComponent(ProgressBar).progress = Number((playerData.HP / playerData.MaxHp).toFixed(2))
+        find("Canvas/UI/Header/Exp/Label").getComponent(Label).string = playerData.EXP + '/' + find("Canvas").getComponent(Player).levelUpNeedExp(playerData.Level)
+        find("Canvas/UI/Header/Exp").getComponent(ProgressBar).progress = Number((playerData.EXP / find("Canvas").getComponent(Player).levelUpNeedExp(playerData.Level)).toFixed(2))
     }
 
     toPlayer() {

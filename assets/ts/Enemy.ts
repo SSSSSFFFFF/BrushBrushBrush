@@ -19,7 +19,7 @@ export class Enemy extends Component {
     playerData: any;
     onLoad () {
         //加载玩家数据
-        this.playerData = find("Canvas/Player").getComponent(Player).playerData;
+        this.playerData = find("Canvas").getComponent(Player).playerData;
         //随机出怪物属性
         this.giveEnemyProperty()
     }
@@ -30,7 +30,7 @@ export class Enemy extends Component {
         let enemyNow = this.enemyNow
         if (enemyNow.status != 'lose'){
             let thisLabel = find("Widget/Info", this.node)
-            //战斗成功
+            //战斗成功，怪物死亡
             if (enemyNow.MaxHp <= 0) {
                 thisLabel.getComponent(Label).string = 'lose'
                 enemyNow.status = 'lose'
@@ -48,7 +48,7 @@ export class Enemy extends Component {
                         break;
                 }
                 //变更进度条
-                find("Canvas/Battle").getComponent(Battle).updateProgress();
+                find("Canvas").getComponent(Battle).updateProgress();
                 //掉落战利品
                 for (let i = 0; i < enemyNow.spoils.length; i++) {
                     if (Math.random() <= enemyNow.spoils[i].chance) {
@@ -58,7 +58,7 @@ export class Enemy extends Component {
                             if(ele.name == enemyNow.spoils[i].name){
                                 isInBag = true
                                 ele.num++
-                                find("Canvas/Bag").getComponent(Bag).updateGood(j, ele)
+                                find("Canvas").getComponent(Bag).updateGood(j, ele)
                             } 
                         }
                         //如果没有在包里找到则新增
@@ -68,7 +68,7 @@ export class Enemy extends Component {
                                 num: 1
                             }
                             this.playerData.bag.push(good)   
-                            find("Canvas/Bag").getComponent(Bag).setBag(good)
+                            find("Canvas").getComponent(Bag).setBag(good)
                         }
                         thisLabel.getComponent(Label).string += '\n' + enemyNow.spoils[i].name
                     }
@@ -82,11 +82,12 @@ export class Enemy extends Component {
                             type: enemyNow.equipment[i].type,
                         }
                         this.playerData.bag.push(good)
-                        find("Canvas/Bag").getComponent(Bag).setBag(good)
+                        find("Canvas").getComponent(Bag).setBag(good)
                         thisLabel.getComponent(Label).string += '\n' + enemyNow.equipment[i].name
                     }
                 }
-                //背包存档
+                this.playerData.EXP = Number((this.playerData.EXP + enemyNow.EXP).toFixed(0))
+                //存档
                 localStorage.setItem('playerData', JSON.stringify(this.playerData))
 
             } else {
