@@ -7,19 +7,19 @@
 
 import { _decorator, Component, Node, find, Label, Button, Prefab, instantiate, director } from 'cc';
 const { ccclass, property } = _decorator;
-
+import { UI } from './UI'
 @ccclass('Player')
 export class Player extends Component {
     callback: () => void;
     //当前用户信息
     playerData: any;
-    //弹窗
-    @property({ type: Prefab })
-    private Model: Prefab = null;
 
     @property({ type: Prefab })
     private pop: Prefab = null;
 
+    @property({ type: Prefab })
+    private Model: Prefab = null;
+    
     onLoad(){
         //获取用户信息
         this.getPlayerData();
@@ -57,18 +57,15 @@ export class Player extends Component {
         }, 1);
     }
     clickClearSave(){
+        let that = this;
         let node = instantiate(this.Model);
-        if (!find("Canvas/Player/Model")) {
-            node.parent = find("Canvas/Player");
-            node.setPosition(0, 0);
-        }
-        find("Canvas/Player/Model/Cancel").on(Button.EventType.CLICK, function () {
+        node.parent = find("Canvas");
+        find("Cancel", node).on(Button.EventType.CLICK, () => {
             node.destroy();
         }, this)
-        find("Canvas/Player/Model/Confirm").on(Button.EventType.CLICK, function () {
+        find("Confirm", node).on(Button.EventType.CLICK, ()=>{
             localStorage.removeItem('playerData')
-            //临时
-            localStorage.removeItem('enemyData')
+            localStorage.removeItem('hard')
             window.location.reload()
         }, this)
     }
@@ -78,7 +75,8 @@ export class Player extends Component {
         //如果不存在用户数据则新建
         if (!this.playerData) {
             this.playerData = {
-                nickName: '',
+                nickName: '游客',
+                Gold:0,
                 MaxHp: 1000,//最大生命值
                 EXP: 0,//经验值  
                 ATK: 40,//攻击力

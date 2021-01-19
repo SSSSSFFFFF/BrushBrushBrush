@@ -87,6 +87,7 @@ export class Enemy extends Component {
                     }
                 }
                 this.playerData.EXP = Number((this.playerData.EXP + enemyNow.EXP).toFixed(0))
+                this.playerData.Gold = Number((this.playerData.Gold + enemyNow.Gold).toFixed(0))
                 //存档
                 localStorage.setItem('playerData', JSON.stringify(this.playerData))
 

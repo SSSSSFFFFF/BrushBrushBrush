@@ -415,6 +415,7 @@ export class Battle extends Component {
                     spoils: setSpoils('boss'),
                     equipment: setEquip('boss',n),
                     EXP:10,
+                    Gold:100,
                 },
                 white: {
                     Level: 'white',
@@ -424,6 +425,7 @@ export class Battle extends Component {
                     spoils: setSpoils('white'),
                     equipment: setEquip('white', n),
                     EXP: 1,
+                    Gold: 10,
                 },
                 blue: {
                     Level: 'blue',
@@ -434,6 +436,7 @@ export class Battle extends Component {
                     spoils: setSpoils('blue'),
                     equipment: setEquip('blue', n),
                     EXP: 2,
+                    Gold: 20,
                 },
                 gold: {
                     Level: 'gold',
@@ -443,7 +446,8 @@ export class Battle extends Component {
                     AtkRate: Number((600 / n).toFixed(2)),
                     spoils: setSpoils('gold'),
                     equipment: setEquip('gold', n),
-                    EXP:4,
+                    EXP: 4,
+                    Gold: 40,
                 }
             }
             globalThis.enemyData = that.enemyData

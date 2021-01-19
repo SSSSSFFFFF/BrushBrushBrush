@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node, find, Button,Animation, Label, color, Color, Sprite, ProgressBar } from 'cc';
+import { _decorator, Component, Node, find, Button,Animation, Label, color, Color, Sprite, ProgressBar, instantiate, Prefab, UITransform, EventHandler } from 'cc';
 const { ccclass, property  } = _decorator;
 import {Player} from './Player'
 
@@ -9,6 +9,10 @@ export class UI extends Component {
     lastIndex: number;
     playerData: any;
 
+    //弹窗
+    @property({ type: Prefab })
+    private Model: Prefab = null;
+
     onLoad() {
         //加载玩家数据
         this.playerData = find("Canvas").getComponent(Player).playerData;
@@ -17,10 +21,41 @@ export class UI extends Component {
         find("Canvas/UI/Layout/toBag").on(Button.EventType.CLICK, this.toBag, this)
         find("Canvas/UI/Layout/toSkill").on(Button.EventType.CLICK, this.toSkill, this)
         find("Canvas/UI/Layout/toBattle").on(Button.EventType.CLICK, this.toBattle, this)
+
+        //昵称
+        this.updateName()
     }
 
     update() {
         this.updateHead();
+    }
+
+
+    updateName() {
+        let that = this
+        let playerData = this.playerData
+        find("Canvas/UI/Header/Name/Label").getComponent(Label).string = playerData.nickName
+        find("Canvas/UI/Header/Name").on(Node.EventType.TOUCH_START, ()=>{
+            let node = instantiate(this.Model);
+            node.parent = find("Canvas");
+            find("Cancel", node).on(Button.EventType.CLICK, () => {
+                node.destroy();
+            }, this)
+            find("Confirm", node).on(Button.EventType.CLICK, ()=>{
+                let name = find("EditBox/TEXT_LABEL", node).getComponent(Label).string
+                if(name != ''){
+                    if (playerData.Gold > 100){
+                        playerData.nickName = name
+                        playerData.Gold = find("Canvas").getComponent(Player).fixed((playerData.Gold-100),0)
+                        find("Canvas").getComponent(Player).setPlayerData(playerData)
+                    } else {
+                        find("Label", node).getComponent(Label).string = "*金币不足"
+                    }
+                } else {
+                    find("Label", node).getComponent(Label).string = "*不能为空"
+                }
+            }, this)
+        }, this)
     }
 
     updateHead() {
@@ -30,6 +65,7 @@ export class UI extends Component {
         find("Canvas/UI/Header/Hp").getComponent(ProgressBar).progress = Number((playerData.HP / playerData.MaxHp).toFixed(2))
         find("Canvas/UI/Header/Exp/Label").getComponent(Label).string = playerData.EXP + '/' + find("Canvas").getComponent(Player).levelUpNeedExp(playerData.Level)
         find("Canvas/UI/Header/Exp").getComponent(ProgressBar).progress = Number((playerData.EXP / find("Canvas").getComponent(Player).levelUpNeedExp(playerData.Level)).toFixed(2))
+        find("Canvas/UI/Header/Gold/GoldNum").getComponent(Label).string = playerData.Gold
     }
 
     toPlayer() {
