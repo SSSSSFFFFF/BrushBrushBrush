@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node, find, Button,Animation, Label, color, Color, Sprite, ProgressBar, instantiate, Prefab, UITransform, EventHandler } from 'cc';
+import { _decorator, Component, Node, find, Button,Animation, Label, color, Color, Sprite, ProgressBar, instantiate, Prefab, UITransform, EventHandler, Layout } from 'cc';
 const { ccclass, property  } = _decorator;
 import {Player} from './Player'
 
@@ -13,6 +13,9 @@ export class UI extends Component {
     @property({ type: Prefab })
     private Model: Prefab = null;
 
+
+    @property({ type: Prefab })
+    private RedPoint: Prefab = null;
     onLoad() {
         //加载玩家数据
         this.playerData = find("Canvas").getComponent(Player).playerData;
@@ -30,11 +33,20 @@ export class UI extends Component {
         this.updateHead();
     }
 
-
+    ShowRedPoint(parentNode){
+        //红点
+        if (!find(parentNode+"/RedPoint")) {
+            let node = instantiate(this.RedPoint);
+            node.parent = find(parentNode)
+            find(parentNode).on(Node.EventType.TOUCH_START, () => {
+                node.destroy()
+            })
+        }
+    }
     updateName() {
         let that = this
         let playerData = this.playerData
-        find("Canvas/UI/Header/Name/Label").getComponent(Label).string = playerData.nickName
+        this.setName(playerData)
         find("Canvas/UI/Header/Name").on(Node.EventType.TOUCH_START, ()=>{
             let node = instantiate(this.Model);
             node.parent = find("Canvas");
@@ -46,8 +58,10 @@ export class UI extends Component {
                 if(name != ''){
                     if (playerData.Gold > 100){
                         playerData.nickName = name
+                        that.setName(playerData)
                         playerData.Gold = find("Canvas").getComponent(Player).fixed((playerData.Gold-100),0)
                         find("Canvas").getComponent(Player).setPlayerData(playerData)
+                        node.destroy();
                     } else {
                         find("Label", node).getComponent(Label).string = "*金币不足"
                     }
@@ -56,6 +70,10 @@ export class UI extends Component {
                 }
             }, this)
         }, this)
+    }
+    setName(playerData){
+        find("Canvas/UI/Header/Name/Label").getComponent(Label).string = playerData.nickName
+        find("Canvas/UI/Header/Name").getComponent(Layout).updateLayout();
     }
 
     updateHead() {

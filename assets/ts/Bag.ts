@@ -41,7 +41,6 @@ export class Bag extends Component {
         this.goodNodes[index].getComponent(Label).string = good.name + '*' + good.num
     }
     setBag(good){
-
         let node = instantiate(this.goods);
         if (good.num) {
             node.getComponent(Label).string = good.name + '*' + good.num

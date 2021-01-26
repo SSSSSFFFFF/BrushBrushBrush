@@ -9,6 +9,7 @@ import {Node, _decorator, Component, Button, find, Prefab, instantiate, Label, R
 const { ccclass, property, integer, float, boolean, string, type } = _decorator;
 import { Player } from "./Player";
 import { Enemy } from "./Enemy";
+import { Skill } from './Skill';
 
 @ccclass('Battle')
 export class Battle extends Component {
@@ -29,7 +30,7 @@ export class Battle extends Component {
     //怪物节点
     enemyNodes: any[] = [];
     //怪物生成数量
-    num: number = 2;
+    num: number = 5;
     // 战斗结果
     result: string;
     // 怪物攻击定时器
@@ -51,13 +52,8 @@ export class Battle extends Component {
     }
 
     update(deltaTime: number) {
-        //判断结果
-        this.checkResult()
-        //检查展示角色状态
-        this.checkPlayer()
     }
     start() {
-
         // 玩家攻击
         find("Canvas/Battle/SpriteSplash").on('touch-start', this.playerAtk, this)
         // 玩家停止攻击
@@ -67,7 +63,7 @@ export class Battle extends Component {
         find("Canvas/Battle/skill1").on(Node.EventType.TOUCH_START, this.playerSkill1, this)
 
         //开始
-        find("Canvas/Battle/Button").on('click', this.startBtn, this)
+        find("Canvas/Battle/Start/Button").on('click', this.startBtn, this)
 
         //初步调整难度
         find("Canvas/Battle/ScrollView/view/content/Button").on(Button.EventType.CLICK, this.Button, this)
@@ -96,12 +92,20 @@ export class Battle extends Component {
         //加载敌人数据
         this.getenemyData()
     }
-    checkPlayer(){
-        let playerData = this.playerData
-        find("Canvas/Battle/Player/Info").getComponent(Label).string = 'HP:' + playerData.HP+'/'+playerData.MaxHp
+    //成功
+    success(){
+        find("Canvas/Battle/Result").getComponent(Label).string = '成功'
+        if (this.boss) {
+            this.playerData.progress = 0
+            //变更进度条
+            find("Canvas").getComponent(Battle).updateProgress();
+        }
+        this.boss = false
+        //战斗结束
+        this.battleEnd()
     }
-    
-    checkResult (){
+    //失败
+    fail (){
         let that = this;
         if (this.result){
             find("Canvas/Battle/Result").getComponent(Label).string = '失败'
@@ -111,39 +115,23 @@ export class Battle extends Component {
             //战斗结束
             that.battleEnd()
         }
-        if (that.enemyNodes.length > 0 && that.enemyNodes[that.enemyNodes.length - 1].getComponent(Enemy).enemyNow.status == 'lose') {
-            find("Canvas/Battle/Result").getComponent(Label).string = '成功'
-            if (this.boss){
-                this.playerData.progress = 0
-                //变更进度条
-                find("Canvas").getComponent(Battle).updateProgress();
-            }
-            this.boss = false
-            //战斗结束
-            that.battleEnd()
-        }
+        
     } 
     battleEnd() {
+        //存档
+        find("Canvas").getComponent(Player).setPlayerData(this.playerData)
         console.log("战斗结束");
         let that = this
-        //清除玩家攻击定时器
-        // clearInterval(that.playerTime)
-        //清除怪物节点
         for (let i = 0; i < that.enemyNodes.length; i++) {
-            that.enemyNodes[i].destroy()
+            clearInterval(that.time[i])
         }
-        that.enemyNodes = []
-        that.playerData.HP = that.playerData.MaxHp 
-        //清空战斗结果
-        this.result = null
-        this.enemyNodesIndex = 0
+        that.enemyNodesIndex = 0
         this.gameStart()
-        // find("Canvas/Battle/Button").getComponent(Button).interactable = true
     }
 
     startBtn(){
         this.gameStart()
-        find("Canvas/Battle/Button").destroy();
+        find("Canvas/Battle/Start").destroy();
     }
     gameStart() {
         let that = this
@@ -160,6 +148,16 @@ export class Battle extends Component {
         clearTimeout(this.gameStartTime)
         // find("Canvas/Battle/Button").getComponent(Button).interactable = false
         this.gameStartTime = setTimeout(() => {
+            //清除之前怪物节点
+            for (let i = 0; i < that.enemyNodes.length; i++) {
+                that.enemyNodes[i].destroy()
+            }
+            that.enemyNodes = []
+            that.playerData.HP = that.playerData.MaxHp
+            //清空战斗结果
+            that.result = null
+
+            //生成怪物
             find("Canvas/Battle/Result").getComponent(Label).string = "战斗开始"
             if (this.playerData.progress >= 100) {
                 //boss
@@ -174,6 +172,7 @@ export class Battle extends Component {
                 for (let i = 0; i < num; i++) {
                     let node = instantiate(this.enemyPre);
                     node.parent = find("Canvas/Battle/Enemies");
+                    node.getComponent(Animation).play("showEnemy")
                     this.enemyNodes.push(node)
                 }
                 //战斗过程
@@ -185,11 +184,17 @@ export class Battle extends Component {
     battleProcess(num){
         let that = this
         this.time = {}
+        let defeatNum = 0
         //怪物攻击
         for (let i = 0; i < num; i++) {
             let enemyNow = this.enemyNodes[i].getComponent(Enemy).enemyNow
             this.time[i] = setInterval(() => {
                 if (enemyNow.status == 'lose'){
+                    defeatNum++
+                    if (defeatNum == num){
+                        that.success()
+                        
+                    }
                     //清除怪物攻击定时器
                     clearInterval(that.time[i])
                 } else {
@@ -199,34 +204,17 @@ export class Battle extends Component {
                     node.getComponent(RichText).string = '-' + Number(enemyNow.ATK).toFixed()
                     this.playerData.HP = Number((this.playerData.HP - enemyNow.ATK).toFixed())
                     node.getComponent(Animation).play("atacked")
-
                     if (this.playerData.HP <= 0) {
                         this.playerData.HP = 0;
                         this.result = 'fail';
+                        this.fail();
                     }
                 }
             }, enemyNow.AtkRate)
         }
     }
     playerSkill1() {
-        let that = this;
-        // 技能1
-        find("Canvas/Battle/skill1").off(Node.EventType.TOUCH_START)
-        this.cd1 = 10;
-        this.cd1Time = setInterval(()=>{
-            find("Canvas/Battle/skill1/Label").getComponent(Label).string = (this.cd1).toFixed();
-            this.cd1 = this.cd1 - 1
-            if (this.cd1 <= 0) {
-                clearInterval(this.cd1Time)
-                // 技能1
-                find("Canvas/Battle/skill1").on(Node.EventType.TOUCH_START, this.playerSkill1, this)
-            }
-        },1000)
-        for (let i = 0; i < that.enemyNodes.length; i++) {
-            let enemyNow = that.enemyNodes[i].getComponent(Enemy).enemyNow
-            enemyNow.MaxHp = Number((enemyNow.MaxHp - 100).toFixed())
-            that.enemyAtackedAnimation(that.enemyNodes[i])
-        }
+        find("Canvas").getComponent(Skill).skill1(this);
     }
 
     enemyAtackedAnimation(enemyNodes){
@@ -240,7 +228,9 @@ export class Battle extends Component {
     playerAtkStop(){
         clearInterval(this.playerTime)
     }
-
+    fixed(num, fix) {
+        return Number(num.toFixed(fix))
+    }
     playerAtk() {
         let that = this
         that.playerTime = setInterval(() => {
@@ -248,20 +238,24 @@ export class Battle extends Component {
         }, that.playerData.AtkRate)
         //玩家攻击
         function atack(){
-            console.log("atack");
             find("Canvas/Battle/Player").getComponent(Animation).play("atack")
             if (that.enemyNodes.length > 0) {
-                let i = that.enemyNodesIndex;
-                let enemyNow = that.enemyNodes[that.enemyNodesIndex].getComponent(Enemy).enemyNow
-                if (enemyNow.status == 'lose' && i < that.num - 1) {
-                    that.enemyNodesIndex = i + 1
-                    enemyNow = that.enemyNodes[that.enemyNodesIndex].getComponent(Enemy).enemyNow
+                let i = that.enemyNodesIndex
+                let enemyNow = that.enemyNodes[i].getComponent(Enemy).enemyNow
+                next()
+                function next() {
+                    if (enemyNow.status == 'lose' && i < that.num - 1) {
+                        i = i + 1
+                        if (that.enemyNodes[i]) {
+                            enemyNow = that.enemyNodes[i].getComponent(Enemy).enemyNow
+                            next()
+                        }
+                    }
                 }
+                console.log(i);
                 enemyNow.MaxHp = Number((enemyNow.MaxHp - that.playerData.ATK).toFixed())
                 //怪物掉血动画
-                console.log(that.enemyNodesIndex);
-                that.enemyAtackedAnimation(that.enemyNodes[that.enemyNodesIndex])
-
+                that.enemyAtackedAnimation(that.enemyNodes[i])
             } 
         }
     }
@@ -414,7 +408,7 @@ export class Battle extends Component {
                     AtkRate: Number((1000 / n).toFixed(2)),//攻速(多少毫秒攻击一次)
                     spoils: setSpoils('boss'),
                     equipment: setEquip('boss',n),
-                    EXP:10,
+                    EXP:that.fixed(10*n,0),
                     Gold:100,
                 },
                 white: {
@@ -424,7 +418,7 @@ export class Battle extends Component {
                     AtkRate: Number((800 / n).toFixed(2)),//攻速(多少毫秒攻击一次)
                     spoils: setSpoils('white'),
                     equipment: setEquip('white', n),
-                    EXP: 1,
+                    EXP: that.fixed(1 * n, 0),
                     Gold: 10,
                 },
                 blue: {
@@ -435,7 +429,7 @@ export class Battle extends Component {
                     AtkRate: Number((700 / n).toFixed(2)),
                     spoils: setSpoils('blue'),
                     equipment: setEquip('blue', n),
-                    EXP: 2,
+                    EXP: that.fixed(2 * n, 0),
                     Gold: 20,
                 },
                 gold: {
@@ -446,7 +440,7 @@ export class Battle extends Component {
                     AtkRate: Number((600 / n).toFixed(2)),
                     spoils: setSpoils('gold'),
                     equipment: setEquip('gold', n),
-                    EXP: 4,
+                    EXP: that.fixed(4 * n, 0),
                     Gold: 40,
                 }
             }

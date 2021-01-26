@@ -5,7 +5,7 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
-import { _decorator, Component, Node, find, Label, ProgressBar, cclegacy } from 'cc';
+import { _decorator, Component, Node, find, Label, ProgressBar, cclegacy, Animation } from 'cc';
 import { Player } from './Player';
 import { Battle } from './Battle';
 import { Bag } from './Bag';
@@ -17,17 +17,20 @@ export class Enemy extends Component {
     //当前怪物
     enemyNow: any;
     playerData: any;
+    HP: any;
     onLoad () {
         //加载玩家数据
         this.playerData = find("Canvas").getComponent(Player).playerData;
         //随机出怪物属性
         this.giveEnemyProperty()
+        this.HP = this.enemyNow.MaxHp
     }
     update(deltaTime: number) {
         this.updateEnemyData();
     }
     updateEnemyData(){
         let enemyNow = this.enemyNow
+        find("HP", this.node).getComponent(ProgressBar).progress = Number((enemyNow.MaxHp/this.HP).toFixed(2))
         if (enemyNow.status != 'lose'){
             let thisLabel = find("Widget/Info", this.node)
             //战斗成功，怪物死亡
@@ -89,8 +92,7 @@ export class Enemy extends Component {
                 this.playerData.EXP = Number((this.playerData.EXP + enemyNow.EXP).toFixed(0))
                 this.playerData.Gold = Number((this.playerData.Gold + enemyNow.Gold).toFixed(0))
                 //存档
-                localStorage.setItem('playerData', JSON.stringify(this.playerData))
-
+                find("Canvas").getComponent(Player).setPlayerData(this.playerData)
             } else {
                 thisLabel.getComponent(Label).string = enemyNow.Level + '\n血量：' + enemyNow.MaxHp + '\n攻击力：' + enemyNow.ATK
             }
@@ -116,8 +118,8 @@ export class Enemy extends Component {
                 enemyNow = enemyData.white
             }
         }
-
-
+        //微调怪物攻速
+        enemyNow.AtkRate = Number((enemyNow.AtkRate * (Math.random() * 0.3 + 1)).toFixed(0))
         this.enemyNow = enemyNow
     }
     

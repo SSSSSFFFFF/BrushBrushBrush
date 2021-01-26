@@ -5,7 +5,7 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
-import { _decorator, Component, Node, find, Label, Button, Prefab, instantiate, director } from 'cc';
+import { _decorator, Component, Node, find, Label, Button, Prefab, instantiate, director, ProgressBar } from 'cc';
 const { ccclass, property } = _decorator;
 import { UI } from './UI'
 @ccclass('Player')
@@ -25,6 +25,10 @@ export class Player extends Component {
         this.getPlayerData();
         //穿上装备
         this.setEquipment();
+        //天赋红点
+        if (this.playerData.Points > 0){
+            find("Canvas").getComponent(UI).ShowRedPoint("Canvas/UI/Header/Lv")
+        }
     }
     start() {
         //清除存档
@@ -79,21 +83,18 @@ export class Player extends Component {
                 Gold:0,
                 MaxHp: 1000,//最大生命值
                 EXP: 0,//经验值  
-                ATK: 40,//攻击力
+                ATK: 50,//攻击力
                 AtkRate: 500,//攻速(多少毫秒攻击一次)
                 Crit: 0.1,//暴击率
                 CritD: 1.5,//暴击伤害
                 Level: 1,//等级
                 LevelUpNeedExp: that.levelUpNeedExp(1),//升级所需经验
                 Points:10, //天赋点
-                HPS:5.5,//秒回
-                addPoints: { //记录天赋添加的值
-                    MaxHp:0,
+                UsedPoints:{
                     ATK:0,
-                    Crit:0,
-                    CritD:0,
-                    HPS:0,
+                    MaxHp:0
                 },
+                HPS:5.5,//秒回
                 bag:[],
                 progress:99,
                 equip:{
@@ -111,7 +112,7 @@ export class Player extends Component {
             }
             localStorage.setItem('playerData', JSON.stringify(this.playerData))
         }
-        //创建临时血量
+        //计算角色状态
         this.playerData.HP = this.playerData.MaxHp
     }
     //升级所需经验
@@ -173,6 +174,8 @@ export class Player extends Component {
         // + '\n暴击率：' + (playerData.Crit * 100).toFixed(2)+ '%'
         //     + '\n暴击伤害：' + (playerData.CritD * 100).toFixed(2) + '%'
         + '\n每秒恢复生命值：' + playerData.HPS+ '/s'
+
+        find("Canvas/Battle/Player/HP").getComponent(ProgressBar).progress = Number((playerData.HP / playerData.MaxHp).toFixed(2))
     }
     fixed(num,fix){
         return Number(num.toFixed(fix))
@@ -184,6 +187,9 @@ export class Player extends Component {
             playerData.EXP = this.fixed((playerData.EXP - playerData.LevelUpNeedExp),0) 
             playerData.Level = this.fixed((playerData.Level + 1),0) ;
             playerData.LevelUpNeedExp = this.levelUpNeedExp(playerData.Level)
+            playerData.Points = this.fixed(playerData.Points + 2,0)
+            //红点
+            find("Canvas").getComponent(UI).ShowRedPoint("Canvas/UI/Header/Lv")
             this.setPlayerData(playerData)
         }
     }
