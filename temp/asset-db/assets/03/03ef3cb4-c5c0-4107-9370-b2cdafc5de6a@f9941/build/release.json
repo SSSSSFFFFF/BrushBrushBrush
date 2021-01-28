@@ -1,0 +1,53 @@
+[
+    1,
+    [
+        "037zy0xcBBB5Nwss2vxd5q@6c48a"
+    ],
+    [
+        "_textureSource"
+    ],
+    [
+        "cc.SpriteFrame"
+    ],
+    0,
+    [
+        {
+            "name": "write",
+            "rect": {
+                "x": 25,
+                "y": 16,
+                "width": 159,
+                "height": 159
+            },
+            "offset": {
+                "x": 4.5,
+                "y": 4.5
+            },
+            "originalSize": {
+                "width": 200,
+                "height": 200
+            },
+            "rotated": false,
+            "capInsets": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "texture": "03ef3cb4-c5c0-4107-9370-b2cdafc5de6a@6c48a"
+        }
+    ],
+    [
+        0
+    ],
+    0,
+    [
+        0
+    ],
+    [
+        0
+    ],
+    [
+        0
+    ]
+]

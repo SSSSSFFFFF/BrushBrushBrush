@@ -4152,3 +4152,281 @@
 2021-1-20 15-02-debug:"Process: heapTotal 369.70MB heapUsed 334.94MB rss 403.09MB"
 2021-1-20 15-02-debug:"// ---- web-mobile:(onAfterBuild) success ----"
 2021-1-20 15-02-debug:"web-mobile:(onAfterBuild) √"0.8124999999999997
+2021-1-28 09-57-debug:"Start build task, options:"{"buildPath":"./build","compressTexture":true,"debug":false,"experimentalEraseModules":false,"mainBundleCompressionType":"merge_dep","mainBundleIsRemote":false,"md5Cache":true,"mergeStartScene":false,"name":"BrushBrushBrush","outputName":"web-mobile","packAutoAtlas":true,"packages":{"web-mobile":{"orientation":"auto","polyfills":{"asyncFunctions":true}}},"platform":"web-mobile","replaceSplashScreen":false,"scenes":[{"url":"db://assets/scene.scene","uuid":"d971fa4a-60bb-4d68-a37b-8906ec766765"}],"sourceMaps":false,"startScene":"d971fa4a-60bb-4d68-a37b-8906ec766765"}
+2021-1-28 09-57-debug:"Query all assets info in project"
+2021-1-28 09-57-debug:"BuildAssetLibrary initialized with asset 283!"
+2021-1-28 09-57-debug:"  Number of all scenes: 1"
+2021-1-28 09-57-debug:"  Number of other assets: 307"
+2021-1-28 09-57-debug:"  Number of all scripts: 9"
+2021-1-28 09-57-debug:"web-mobile:(onAfterInit) start..."0
+2021-1-28 09-57-debug:"// ---- web-mobile:(onAfterInit) ----"
+2021-1-28 09-57-debug:"// ---- web-mobile:(onAfterInit) success ----"
+2021-1-28 09-57-debug:"web-mobile:(onAfterInit) √"0.0375
+2021-1-28 09-57-debug:"Process: heapTotal 244.10MB heapUsed 212.11MB rss 344.40MB"
+2021-1-28 09-57-log:"// ---- 加载刷新项目脚本 ----"
+2021-1-28 09-57-debug:"加载刷新项目脚本 start"0.0375
+2021-1-28 09-57-debug:"Process: heapTotal 244.10MB heapUsed 212.92MB rss 344.42MB"
+2021-1-28 09-57-debug:"reload all scripts."
+2021-1-28 09-57-debug:"[[Executor]] Module \"builtin:cc\" loaded."
+2021-1-28 09-57-debug:"Load module registry for project:///assets/ts/Bag.js at D:\\project\\BrushBrushBrush\\library\\5a\\5ab50ea2-e8fa-4da7-ab53-8d71263bc30d\\editor.js"
+2021-1-28 09-57-debug:"Load module registry for project:///assets/ts/Battle.js at D:\\project\\BrushBrushBrush\\library\\d5\\d56f6a1d-6e38-470a-a534-b2dce0e7cb31\\editor.js"
+2021-1-28 09-57-debug:"Load module registry for project:///assets/ts/Enemy.js at D:\\project\\BrushBrushBrush\\library\\8e\\8ec2139e-795c-447d-b735-0a00d820cbd9\\editor.js"
+2021-1-28 09-57-debug:"Load module registry for project:///assets/ts/Main.js at D:\\project\\BrushBrushBrush\\library\\7d\\7d072f86-b8be-46bf-a4e2-61cc33966ed2\\editor.js"
+2021-1-28 09-57-debug:"Load module registry for project:///assets/ts/Player.js at D:\\project\\BrushBrushBrush\\library\\f4\\f4710e78-09d1-4d3a-8631-19c566842f48\\editor.js"
+2021-1-28 09-57-debug:"Load module registry for project:///assets/ts/Points.js at D:\\project\\BrushBrushBrush\\library\\38\\3832e116-dd92-4232-9094-938421aae50b\\editor.js"
+2021-1-28 09-57-debug:"Load module registry for project:///assets/ts/UI.js at D:\\project\\BrushBrushBrush\\library\\42\\4211efcf-445c-466b-83a5-558c88cb8ade\\editor.js"
+2021-1-28 09-57-debug:"[[Executor]] Importing \"project:///assets/ts/Bag.js\"..."
+2021-1-28 09-57-debug:"[[Executor]] Module \"builtin:cce.code-quality.cr\" loaded."
+2021-1-28 09-57-debug:"[[Executor]] Register UI"
+2021-1-28 09-57-debug:"Load module registry for project:///assets/ts/Status.js at D:\\project\\BrushBrushBrush\\library\\cb\\cb03b016-0ac5-412c-a8fa-1c02a5075cdb\\editor.js"
+2021-1-28 09-57-debug:"Load module registry for project:///assets/ts/Skill.js at D:\\project\\BrushBrushBrush\\library\\93\\932b9682-51a6-4a50-8a99-58c026b71c0c\\editor.js"
+2021-1-28 09-57-debug:"[[Executor]] Module \"project:///assets/ts/UI.js\" loaded."
+2021-1-28 09-57-debug:"[[Executor]] Register Player"
+2021-1-28 09-57-debug:"[[Executor]] Module \"project:///assets/ts/Player.js\" loaded."
+2021-1-28 09-57-debug:"[[Executor]] Importing \"project:///assets/ts/Battle.js\"..."
+2021-1-28 09-57-debug:"[[Executor]] Register Enemy"
+2021-1-28 09-57-debug:"[[Executor]] Register Bag"
+2021-1-28 09-57-debug:"[[Executor]] Module \"project:///assets/ts/Enemy.js\" loaded."
+2021-1-28 09-57-debug:"[[Executor]] Module \"project:///assets/ts/Skill.js\" loaded."
+2021-1-28 09-57-debug:"[[Executor]] Register Skill"
+2021-1-28 09-57-debug:"[[Executor]] Register Battle"
+2021-1-28 09-57-debug:"[[Executor]] Importing \"project:///assets/ts/Enemy.js\"..."
+2021-1-28 09-57-debug:"[[Executor]] Module \"project:///assets/ts/Battle.js\" loaded."
+2021-1-28 09-57-debug:"[[Executor]] Module \"project:///assets/ts/Bag.js\" loaded."
+2021-1-28 09-57-debug:"[[Executor]] Importing \"project:///assets/ts/Main.js\"..."
+2021-1-28 09-57-debug:"[[Executor]] Register Main"
+2021-1-28 09-57-debug:"[[Executor]] Module \"project:///assets/ts/Main.js\" loaded."
+2021-1-28 09-57-debug:"[[Executor]] Importing \"project:///assets/ts/Points.js\"..."
+2021-1-28 09-57-debug:"[[Executor]] Register Points"
+2021-1-28 09-57-debug:"[[Executor]] Module \"project:///assets/ts/Points.js\" loaded."
+2021-1-28 09-57-debug:"[[Executor]] Importing \"project:///assets/ts/Player.js\"..."
+2021-1-28 09-57-debug:"[[Executor]] Importing \"project:///assets/ts/Skill.js\"..."
+2021-1-28 09-57-debug:"[[Executor]] Importing \"project:///assets/ts/Status.js\"..."
+2021-1-28 09-57-debug:"[[Executor]] Register Status"
+2021-1-28 09-57-debug:"[[Executor]] Module \"project:///assets/ts/Status.js\" loaded."
+2021-1-28 09-57-debug:"[[Executor]] Importing \"project:///assets/ts/UI.js\"..."
+2021-1-28 09-57-debug:"加载刷新项目脚本 √"0.06607142857142857
+2021-1-28 09-57-debug:"查询 asset bundle start"0.06607142857142857
+2021-1-28 09-57-log:"// ---- 查询 asset bundle ----"
+2021-1-28 09-57-debug:"Process: heapTotal 245.10MB heapUsed 218.15MB rss 346.36MB"
+2021-1-28 09-57-debug:"查询 asset bundle √"0.09464285714285714
+2021-1-28 09-57-log:"// ---- 查询使用的资源以及资源包配置 ----"
+2021-1-28 09-57-debug:"getRawInstance""db://assets/scene.scene"
+2021-1-28 09-57-debug:"Number of scenes: 1"
+2021-1-28 09-57-debug:"Process: heapTotal 245.10MB heapUsed 218.28MB rss 346.37MB"
+2021-1-28 09-57-debug:"查询使用的资源以及资源包配置 start"0.09464285714285714
+2021-1-28 09-57-debug:"getRawInstance""db://internal/default_ui/atom.plist"
+2021-1-28 09-57-debug:"getRawInstance""db://internal/default_ui/atom.png/spriteFrame"
+2021-1-28 09-57-debug:"getRawInstance""db://assets/prefab/RedPoint.prefab"
+2021-1-28 09-57-debug:"getRawInstance""db://assets/prefab/ModelPoint.prefab"
+2021-1-28 09-57-debug:"getRawInstance""db://internal/default_ui/atom.png/texture"
+2021-1-28 09-57-debug:"getRawInstance""db://internal/default_ui/atom.png"
+2021-1-28 09-57-debug:"Number of assets: 72"
+2021-1-28 09-57-debug:"Number of asset bundle: 1"
+2021-1-28 09-57-debug:"整理脚本分组与脚本数据 start"0.1232142857142857
+2021-1-28 09-57-log:"// ---- 整理脚本分组与脚本数据 ----"
+2021-1-28 09-57-debug:"Process: heapTotal 246.80MB heapUsed 224.79MB rss 349.24MB"
+2021-1-28 09-57-debug:"sort script group..."
+2021-1-28 09-57-debug:"整理脚本分组与脚本数据 √"0.15178571428571427
+2021-1-28 09-57-debug:"整理纹理压缩任务 start"0.15178571428571427
+2021-1-28 09-57-log:"// ---- 整理纹理压缩任务 ----"
+2021-1-28 09-57-debug:"查询使用的资源以及资源包配置 √"0.1232142857142857
+2021-1-28 09-57-debug:"Process: heapTotal 246.80MB heapUsed 224.83MB rss 349.25MB"
+2021-1-28 09-57-debug:"Number of image-compress task: 0"
+2021-1-28 09-57-debug:"整理纹理压缩任务 √"0.18035714285714285
+2021-1-28 09-57-debug:"Process: heapTotal 246.80MB heapUsed 225.11MB rss 349.26MB"
+2021-1-28 09-57-log:"// ---- 初步划分 json 合并分组 ----"
+2021-1-28 09-57-debug:"Number of json group: 1"
+2021-1-28 09-57-debug:"初步划分 json 合并分组 √"0.20892857142857144
+2021-1-28 09-57-log:"// ---- 整理合并压缩 Texture2D 的 json 数据 ----"
+2021-1-28 09-57-debug:"整理合并压缩 Texture2D 的 json 数据 start"0.20892857142857144
+2021-1-28 09-57-debug:"Process: heapTotal 246.80MB heapUsed 225.23MB rss 349.27MB"
+2021-1-28 09-57-debug:"整理合并压缩 Texture2D 的 json 数据 √"0.23750000000000002
+2021-1-28 09-57-log:"// ----  ----"
+2021-1-28 09-57-debug:" start"0.23750000000000002
+2021-1-28 09-57-debug:"Process: heapTotal 246.80MB heapUsed 225.29MB rss 349.30MB"
+2021-1-28 09-57-debug:"初步划分 json 合并分组 start"0.18035714285714285
+2021-1-28 09-57-warn:"Browserslist: caniuse-lite is outdated. Please run:\nnpx browserslist@latest --update-db"
+2021-1-28 09-57-debug:"打包脚本"0.23750000000000002
+2021-1-28 09-57-debug:"Process: heapTotal 294.89MB heapUsed 268.11MB rss 401.22MB"
+2021-1-28 09-57-warn:"Browserslist: caniuse-lite is outdated. Please run the following command: `npx browserslist --update-db`"
+2021-1-28 09-57-warn:"[[Build.Script.Rollup]] Circular dependency: D:\\project\\BrushBrushBrush\\assets\\ts\\Player.ts -> D:\\project\\BrushBrushBrush\\assets\\ts\\UI.ts -> D:\\project\\BrushBrushBrush\\assets\\ts\\Player.ts"
+2021-1-28 09-57-warn:"[[Build.Script.Rollup]] Circular dependency: D:\\project\\BrushBrushBrush\\assets\\ts\\Battle.ts -> D:\\project\\BrushBrushBrush\\assets\\ts\\Enemy.ts -> D:\\project\\BrushBrushBrush\\assets\\ts\\Battle.ts"
+2021-1-28 09-57-debug:"Copy externalScripts success!"
+2021-1-28 09-57-debug:"打包脚本√"0.23750000000000002
+2021-1-28 09-57-debug:"Process: heapTotal 352.89MB heapUsed 321.50MB rss 455.67MB"
+2021-1-28 09-57-debug:"构建引擎"0.23750000000000002
+2021-1-28 09-57-warn:"Engine cache directory({link(C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\CocosCreator\\3.0.0-preview.1\\builder\\engine\\5a88eaad967e648171f1e5e775e43059)}) exists but has empty content. It's abnormal."
+2021-1-28 09-57-debug:{"incremental":"C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\CocosCreator\\3.0.0-preview.1\\builder\\engine\\5a88eaad967e648171f1e5e775e43059.watch-files.json","engine":"C:\\CocosDashboard_1.0.11\\resources\\.editors\\Creator\\3.0.0-Preview.1\\resources\\resources\\3d\\engine","out":"C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\CocosCreator\\3.0.0-preview.1\\builder\\engine\\5a88eaad967e648171f1e5e775e43059","moduleFormat":2,"compress":true,"split":false,"ammoJsWasm":"fallback","buildTimeConstants":{"HTML5":true,"WECHAT":false,"ALIPAY":false,"BAIDU":false,"XIAOMI":false,"BYTEDANCE":false,"OPPO":false,"VIVO":false,"HUAWEI":false,"NATIVE":false,"COCOSPLAY":false,"LINKSURE":false,"QTT":false,"EDITOR":false,"PREVIEW":false,"BUILD":true,"TEST":false,"DEBUG":false,"DEV":false,"RUNTIME_BASED":false,"MINIGAME":false,"JSB":false,"SUPPORT_JIT":true},"loose":true}
+2021-1-28 09-57-debug:"Build-engine options: {\n  \"incremental\": \"C:\\\\Users\\\\ADMINI~1\\\\AppData\\\\Local\\\\Temp\\\\CocosCreator\\\\3.0.0-preview.1\\\\builder\\\\engine\\\\5a88eaad967e648171f1e5e775e43059.watch-files.json\",\n  \"engine\": \"C:\\\\CocosDashboard_1.0.11\\\\resources\\\\.editors\\\\Creator\\\\3.0.0-Preview.1\\\\resources\\\\resources\\\\3d\\\\engine\",\n  \"out\": \"C:\\\\Users\\\\ADMINI~1\\\\AppData\\\\Local\\\\Temp\\\\CocosCreator\\\\3.0.0-preview.1\\\\builder\\\\engine\\\\5a88eaad967e648171f1e5e775e43059\",\n  \"moduleFormat\": 2,\n  \"compress\": true,\n  \"split\": false,\n  \"ammoJsWasm\": \"fallback\",\n  \"buildTimeConstants\": {\n    \"HTML5\": true,\n    \"WECHAT\": false,\n    \"ALIPAY\": false,\n    \"BAIDU\": false,\n    \"XIAOMI\": false,\n    \"BYTEDANCE\": false,\n    \"OPPO\": false,\n    \"VIVO\": false,\n    \"HUAWEI\": false,\n    \"NATIVE\": false,\n    \"COCOSPLAY\": false,\n    \"LINKSURE\": false,\n    \"QTT\": false,\n    \"EDITOR\": false,\n    \"PREVIEW\": false,\n    \"BUILD\": true,\n    \"TEST\": false,\n    \"DEBUG\": false,\n    \"DEV\": false,\n    \"RUNTIME_BASED\": false,\n    \"MINIGAME\": false,\n    \"JSB\": false,\n    \"SUPPORT_JIT\": true\n  },\n  \"loose\": true,\n  \"moduleEntries\": [\n    \"base\",\n    \"gfx-webgl\",\n    \"gfx-webgl2\",\n    \"ui\",\n    \"particle\",\n    \"physics-cannon\",\n    \"physics-framework\",\n    \"physics-2d-box2d\",\n    \"physics-2d-framework\",\n    \"intersection-2d\",\n    \"particle-2d\",\n    \"audio\",\n    \"video\",\n    \"webview\",\n    \"tween\",\n    \"terrain\",\n    \"tiled-map\",\n    \"spine\",\n    \"dragonbones\"\n  ]\n}"
+2021-1-28 09-57-debug:"Module source \"internal-constants\":\nexport const EXPORT_TO_GLOBAL = true;\nexport const HTML5 = true;\nexport const WECHAT = false;\nexport const ALIPAY = false;\nexport const BAIDU = false;\nexport const XIAOMI = false;\nexport const BYTEDANCE = false;\nexport const OPPO = false;\nexport const VIVO = false;\nexport const HUAWEI = false;\nexport const NATIVE = false;\nexport const COCOSPLAY = false;\nexport const LINKSURE = false;\nexport const QTT = false;\nexport const EDITOR = false;\nexport const PREVIEW = false;\nexport const BUILD = true;\nexport const TEST = false;\nexport const DEBUG = false;\nexport const DEV = false;\nexport const RUNTIME_BASED = false;\nexport const MINIGAME = false;\nexport const JSB = false;\nexport const SUPPORT_JIT = true;"
+2021-1-28 09-57-debug:"Module source \"cc\":\nexport * from 'C:\\\\CocosDashboard_1.0.11\\\\resources\\\\.editors\\\\Creator\\\\3.0.0-Preview.1\\\\resources\\\\resources\\\\3d\\\\engine\\\\exports\\\\audio.ts';\nexport * from 'C:\\\\CocosDashboard_1.0.11\\\\resources\\\\.editors\\\\Creator\\\\3.0.0-Preview.1\\\\resources\\\\resources\\\\3d\\\\engine\\\\exports\\\\base.ts';\nexport * from 'C:\\\\CocosDashboard_1.0.11\\\\resources\\\\.editors\\\\Creator\\\\3.0.0-Preview.1\\\\resources\\\\resources\\\\3d\\\\engine\\\\exports\\\\dragonbones.ts';\nexport * from 'C:\\\\CocosDashboard_1.0.11\\\\resources\\\\.editors\\\\Creator\\\\3.0.0-Preview.1\\\\resources\\\\resources\\\\3d\\\\engine\\\\exports\\\\gfx-webgl.ts';\nexport * from 'C:\\\\CocosDashboard_1.0.11\\\\resources\\\\.editors\\\\Creator\\\\3.0.0-Preview.1\\\\resources\\\\resources\\\\3d\\\\engine\\\\exports\\\\gfx-webgl2.ts';\nexport * from 'C:\\\\CocosDashboard_1.0.11\\\\resources\\\\.editors\\\\Creator\\\\3.0.0-Preview.1\\\\resources\\\\resources\\\\3d\\\\engine\\\\exports\\\\intersection-2d.ts';\nexport * from 'C:\\\\CocosDashboard_1.0.11\\\\resources\\\\.editors\\\\Creator\\\\3.0.0-Preview.1\\\\resources\\\\resources\\\\3d\\\\engine\\\\exports\\\\particle-2d.ts';\nexport * from 'C:\\\\CocosDashboard_1.0.11\\\\resources\\\\.editors\\\\Creator\\\\3.0.0-Preview.1\\\\resources\\\\resources\\\\3d\\\\engine\\\\exports\\\\particle.ts';\nexport * from 'C:\\\\CocosDashboard_1.0.11\\\\resources\\\\.editors\\\\Creator\\\\3.0.0-Preview.1\\\\resources\\\\resources\\\\3d\\\\engine\\\\exports\\\\physics-2d-box2d.ts';\nexport * from 'C:\\\\CocosDashboard_1.0.11\\\\resources\\\\.editors\\\\Creator\\\\3.0.0-Preview.1\\\\resources\\\\resources\\\\3d\\\\engine\\\\exports\\\\physics-2d-framework.ts';\nexport * from 'C:\\\\CocosDashboard_1.0.11\\\\resources\\\\.editors\\\\Creator\\\\3.0.0-Preview.1\\\\resources\\\\resources\\\\3d\\\\engine\\\\exports\\\\physics-cannon.ts';\nexport * from 'C:\\\\CocosDashboard_1.0.11\\\\resources\\\\.editors\\\\Creator\\\\3.0.0-Preview.1\\\\resources\\\\resources\\\\3d\\\\engine\\\\exports\\\\physics-framework.ts';\nexport * from 'C:\\\\CocosDashboard_1.0.11\\\\resources\\\\.editors\\\\Creator\\\\3.0.0-Preview.1\\\\resources\\\\resources\\\\3d\\\\engine\\\\exports\\\\spine.ts';\nexport * from 'C:\\\\CocosDashboard_1.0.11\\\\resources\\\\.editors\\\\Creator\\\\3.0.0-Preview.1\\\\resources\\\\resources\\\\3d\\\\engine\\\\exports\\\\terrain.ts';\nexport * from 'C:\\\\CocosDashboard_1.0.11\\\\resources\\\\.editors\\\\Creator\\\\3.0.0-Preview.1\\\\resources\\\\resources\\\\3d\\\\engine\\\\exports\\\\tiled-map.ts';\nexport * from 'C:\\\\CocosDashboard_1.0.11\\\\resources\\\\.editors\\\\Creator\\\\3.0.0-Preview.1\\\\resources\\\\resources\\\\3d\\\\engine\\\\exports\\\\tween.ts';\nexport * from 'C:\\\\CocosDashboard_1.0.11\\\\resources\\\\.editors\\\\Creator\\\\3.0.0-Preview.1\\\\resources\\\\resources\\\\3d\\\\engine\\\\exports\\\\ui.ts';\nexport * from 'C:\\\\CocosDashboard_1.0.11\\\\resources\\\\.editors\\\\Creator\\\\3.0.0-Preview.1\\\\resources\\\\resources\\\\3d\\\\engine\\\\exports\\\\video.ts';\nexport * from 'C:\\\\CocosDashboard_1.0.11\\\\resources\\\\.editors\\\\Creator\\\\3.0.0-Preview.1\\\\resources\\\\resources\\\\3d\\\\engine\\\\exports\\\\webview.ts';"
+2021-1-28 09-58-warn:"The 'this' keyword is equivalent to 'undefined' at the top level of an ES module, and has been rewritten"
+2021-1-28 09-58-warn:"The 'this' keyword is equivalent to 'undefined' at the top level of an ES module, and has been rewritten"
+2021-1-28 09-58-error:"[BABEL] Note: The code generator has deoptimised the styling of C:\\CocosDashboard_1.0.11\\resources\\.editors\\Creator\\3.0.0-Preview.1\\resources\\resources\\3d\\engine\\cocos\\dragonbones\\lib\\dragonBones.js as it exceeds the max of 500KB."
+2021-1-28 09-58-warn:"The 'this' keyword is equivalent to 'undefined' at the top level of an ES module, and has been rewritten"
+2021-1-28 09-58-warn:"The 'this' keyword is equivalent to 'undefined' at the top level of an ES module, and has been rewritten"
+2021-1-28 09-59-debug:"构建引擎√"0.23750000000000002
+2021-1-28 09-59-debug:" √"0.29464285714285715
+2021-1-28 09-59-debug:"构建自动图集 start"0.29464285714285715
+2021-1-28 09-59-debug:"图片拷贝压缩任务 start"0.3517857142857143
+2021-1-28 09-59-log:"// ---- 图片拷贝压缩任务 ----"
+2021-1-28 09-59-log:"// ---- 构建自动图集 ----"
+2021-1-28 09-59-debug:"Process: heapTotal 1363.84MB heapUsed 827.40MB rss 1504.08MB"
+2021-1-28 09-59-debug:"将资源拷贝到指定位置 start"0.4089285714285715
+2021-1-28 09-59-debug:"图片拷贝压缩任务 √"0.4089285714285715
+2021-1-28 09-59-log:"// ---- 将资源拷贝到指定位置 ----"
+2021-1-28 09-59-debug:"Process: heapTotal 1363.84MB heapUsed 827.43MB rss 1504.07MB"
+2021-1-28 09-59-debug:"构建自动图集 √"0.3517857142857143
+2021-1-28 09-59-debug:"Process: heapTotal 1363.84MB heapUsed 827.33MB rss 1504.09MB"
+2021-1-28 09-59-debug:"将资源拷贝到指定位置 √"0.46607142857142864
+2021-1-28 09-59-debug:"将分组后的 json 与散文件构建到指定位置 start"0.46607142857142864
+2021-1-28 09-59-log:"// ---- 将分组后的 json 与散文件构建到指定位置 ----"
+2021-1-28 09-59-debug:"Process: heapTotal 1363.84MB heapUsed 813.61MB rss 1501.25MB"
+2021-1-28 09-59-debug:"Asset Bundle(main) handle assets: 72"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://assets/prefab/equipBtn.prefab)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://assets/img/write.png/spriteFrame)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://assets/prefab/PlayerStatus.prefab)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://assets/img/swords-emblem.png/spriteFrame)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://assets/prefab/Introduction.prefab)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://assets/anim/atack.anim)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://assets/img/backpack.png/spriteFrame)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://internal/default_ui/default_sprite_splash.png/spriteFrame)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://assets/img/back.jpg/spriteFrame)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://internal/default_ui/default_progressbar_bg.png/spriteFrame)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://assets/anim/showEnemy.anim)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://internal/default_ui/default_progressbar.png/spriteFrame)})"
+2021-1-28 09-59-debug:"getRawInstance""db://internal/default_ui/atom.png/spriteFrame"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://assets/img/skills.png/spriteFrame)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://assets/prefab/enemyStatus.prefab)})"
+2021-1-28 09-59-debug:"getRawInstance""db://internal/default_ui/atom.plist"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://assets/anim/toleft.anim)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://assets/prefab/Goods.prefab)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://assets/anim/toright.anim)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://internal/default_ui/default_btn_pressed.png/spriteFrame)})"
+2021-1-28 09-59-debug:"getRawInstance""db://assets/prefab/ModelPoint.prefab"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://internal/default_ui/default_btn_normal.png/spriteFrame)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://internal/default_ui/default_btn_disabled.png/spriteFrame)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://assets/prefab/Model.prefab)})"
+2021-1-28 09-59-debug:"getRawInstance""db://assets/prefab/RedPoint.prefab"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://assets/anim/fromLeft.anim)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://assets/prefab/ModelName.prefab)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://internal/default_ui/default_scrollbar_vertical.png/spriteFrame)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://assets/anim/atacked.anim)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://assets/anim/fromRight.anim)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://internal/default_ui/default_panel.png/spriteFrame)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://internal/default_ui/default_editbox_bg.png/spriteFrame)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://assets/img/battle-gear.png/spriteFrame)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://assets/anim/enemyAtack.anim)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://assets/prefab/Enemy.prefab)})"
+2021-1-28 09-59-debug:"getRawInstance""db://assets/scene.scene"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://internal/default_ui/default_scrollbar_vertical_bg.png/spriteFrame)})"
+2021-1-28 09-59-debug:"Json group(build-task/json) compile success，json number: 6"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://assets/img/write.png/texture)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://assets/img/backpack.png/texture)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://internal/default_ui/default_sprite_splash.png/texture)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://assets/img/back.jpg/texture)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://internal/default_ui/default_progressbar_bg.png/texture)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://internal/default_ui/default_progressbar.png/texture)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://assets/img/swords-emblem.png/texture)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://assets/img/skills.png/texture)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://internal/default_ui/default_btn_pressed.png/texture)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://internal/default_ui/default_btn_normal.png/texture)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://internal/default_ui/default_btn_disabled.png/texture)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://internal/default_ui/default_scrollbar_vertical.png/texture)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://internal/default_ui/default_panel.png/texture)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://internal/default_ui/default_editbox_bg.png/texture)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://assets/img/battle-gear.png/texture)})"
+2021-1-28 09-59-debug:"getRawInstance""db://internal/default_ui/atom.png/texture"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://internal/default_ui/default_scrollbar_vertical_bg.png/texture)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://internal/default_renderpipeline/builtin-forward.rpp)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://internal/default_ui/default_sprite_splash.png)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://internal/default_ui/default_btn_normal.png)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://assets/img/back.jpg)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://internal/default_ui/default_btn_disabled.png)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://internal/default_ui/default_btn_pressed.png)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://internal/default_ui/default_progressbar.png)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://internal/default_ui/default_progressbar_bg.png)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://internal/default_ui/default_scrollbar_vertical.png)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://internal/default_ui/default_scrollbar_vertical_bg.png)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://assets/img/battle-gear.png)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://internal/default_ui/default_panel.png)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://assets/img/backpack.png)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://assets/img/skills.png)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://assets/img/swords-emblem.png)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://internal/default_ui/default_editbox_bg.png)})"
+2021-1-28 09-59-debug:"getSerializedJSON: Use cache serialized JSON of asset ({asset(db://assets/img/write.png)})"
+2021-1-28 09-59-debug:"getRawInstance""db://internal/default_ui/atom.png"
+2021-1-28 09-59-debug:"将分组后的 json 与散文件构建到指定位置 √"0.5232142857142857
+2021-1-28 09-59-debug:"压缩 zip bundle start"0.5232142857142857
+2021-1-28 09-59-log:"// ---- 压缩 zip bundle ----"
+2021-1-28 09-59-debug:"Process: heapTotal 1365.54MB heapUsed 816.98MB rss 1501.85MB"
+2021-1-28 09-59-debug:"压缩 zip bundle √"0.5803571428571429
+2021-1-28 09-59-debug:"给所有的资源加上 md5 后缀 start"0.5803571428571429
+2021-1-28 09-59-log:"// ---- 给所有的资源加上 md5 后缀 ----"
+2021-1-28 09-59-debug:"Process: heapTotal 1365.54MB heapUsed 817.02MB rss 1501.86MB"
+2021-1-28 09-59-debug:"add suffix to assets(18) success!"
+2021-1-28 09-59-debug:"给所有的资源加上 md5 后缀 √"0.6375000000000001
+2021-1-28 09-59-debug:"初始化 settings 与 config start"0.6375000000000001
+2021-1-28 09-59-debug:"Process: heapTotal 1365.54MB heapUsed 818.54MB rss 1502.11MB"
+2021-1-28 09-59-debug:"初始化 settings 与 config √"0.6430555555555556
+2021-1-28 09-59-log:"// ---- 初始化 settings 与 config ----"
+2021-1-28 09-59-debug:"tasks.settings.macro start"0.6430555555555556
+2021-1-28 09-59-debug:"Process: heapTotal 1365.54MB heapUsed 818.59MB rss 1502.11MB"
+2021-1-28 09-59-log:"// ---- tasks.settings.macro ----"
+2021-1-28 09-59-debug:"tasks.settings.macro字段未在编辑器多语言内定义"
+2021-1-28 09-59-debug:"tasks.settings.macro √"0.6486111111111111
+2021-1-28 09-59-debug:"使用缓存 settings start"0.6486111111111111
+2021-1-28 09-59-log:"// ---- 使用缓存 settings ----"
+2021-1-28 09-59-debug:"Process: heapTotal 1365.54MB heapUsed 818.66MB rss 1502.10MB"
+2021-1-28 09-59-debug:"使用缓存 settings √"0.6541666666666667
+2021-1-28 09-59-debug:"custom joint texture layouts start"0.6541666666666667
+2021-1-28 09-59-log:"// ---- custom joint texture layouts ----"
+2021-1-28 09-59-debug:"Process: heapTotal 1365.54MB heapUsed 818.78MB rss 1502.11MB"
+2021-1-28 09-59-debug:"custom joint physics start"0.6597222222222222
+2021-1-28 09-59-debug:"custom joint texture layouts √"0.6597222222222222
+2021-1-28 09-59-debug:"Process: heapTotal 1365.54MB heapUsed 818.81MB rss 1502.11MB"
+2021-1-28 09-59-debug:"custom joint physics √"0.6652777777777777
+2021-1-28 09-59-log:"// ---- 填充脚本数据到 settings ----"
+2021-1-28 09-59-debug:"Process: heapTotal 1365.54MB heapUsed 818.84MB rss 1502.11MB"
+2021-1-28 09-59-debug:"填充脚本数据到 settings start"0.6652777777777777
+2021-1-28 09-59-debug:"填充场景数据到 settings start"0.6708333333333333
+2021-1-28 09-59-log:"// ---- 填充场景数据到 settings ----"
+2021-1-28 09-59-debug:"填充脚本数据到 settings √"0.6708333333333333
+2021-1-28 09-59-debug:"Process: heapTotal 1365.54MB heapUsed 818.87MB rss 1502.11MB"
+2021-1-28 09-59-debug:"填充场景数据到 settings √"0.6763888888888888
+2021-1-28 09-59-debug:"整理 assets 分组，生成 packedAssets 以及 rawAssets 数据 start"0.6763888888888888
+2021-1-28 09-59-log:"// ---- 整理 assets 分组，生成 packedAssets 以及 rawAssets 数据 ----"
+2021-1-28 09-59-debug:"Process: heapTotal 1365.54MB heapUsed 818.91MB rss 1502.11MB"
+2021-1-28 09-59-debug:"整理 assets 分组，生成 packedAssets 以及 rawAssets 数据 √"0.6819444444444444
+2021-1-28 09-59-debug:"从 suffixMap 生成 md5AssetsMap 到 settings start"0.6819444444444444
+2021-1-28 09-59-log:"// ---- 从 suffixMap 生成 md5AssetsMap 到 settings ----"
+2021-1-28 09-59-debug:"Process: heapTotal 1365.54MB heapUsed 818.94MB rss 1502.11MB"
+2021-1-28 09-59-debug:"从 suffixMap 生成 md5AssetsMap 到 settings √"0.6874999999999999
+2021-1-28 09-59-log:"// ---- custom joint physics ----"
+2021-1-28 09-59-debug:"// ---- web-mobile:(onBeforeCompressSettings) ----"
+2021-1-28 09-59-debug:"Process: heapTotal 1365.54MB heapUsed 818.98MB rss 1502.11MB"
+2021-1-28 09-59-debug:"web-mobile:(onBeforeCompressSettings) √"0.7249999999999999
+2021-1-28 09-59-debug:"// ---- web-mobile:(onBeforeCompressSettings) success ----"
+2021-1-28 09-59-debug:"Process: heapTotal 1365.54MB heapUsed 819.02MB rss 1502.11MB"
+2021-1-28 09-59-debug:"web-mobile:(onBeforeCompressSettings) start..."0.6874999999999999
+2021-1-28 09-59-debug:"压缩 config.json 与 settings.js start"0.7249999999999999
+2021-1-28 09-59-log:"// ---- 压缩 config.json 与 settings.js ----"
+2021-1-28 09-59-debug:"保存 config.json start"0.7374999999999998
+2021-1-28 09-59-debug:"压缩 config.json 与 settings.js √"0.7374999999999998
+2021-1-28 09-59-debug:"Process: heapTotal 1365.54MB heapUsed 819.17MB rss 1502.11MB"
+2021-1-28 09-59-debug:"保存 config.json √"0.7499999999999998
+2021-1-28 09-59-log:"// ---- 保存 settings.json ----"
+2021-1-28 09-59-debug:"Process: heapTotal 1365.54MB heapUsed 819.23MB rss 1502.14MB"
+2021-1-28 09-59-debug:"保存 settings.json √"0.7624999999999997
+2021-1-28 09-59-log:"// ---- 整理静态模板文件 ----"
+2021-1-28 09-59-debug:"Process: heapTotal 1365.54MB heapUsed 819.40MB rss 1502.13MB"
+2021-1-28 09-59-debug:"整理静态模板文件 √"0.7749999999999997
+2021-1-28 09-59-debug:"web-mobile:(onAfterBuild) start..."0.7749999999999997
+2021-1-28 09-59-log:"// ---- 保存 config.json ----"
+2021-1-28 09-59-debug:"// ---- web-mobile:(onAfterBuild) ----"
+2021-1-28 09-59-debug:"// ---- web-mobile:(onAfterBuild) success ----"
+2021-1-28 09-59-debug:"Process: heapTotal 1365.54MB heapUsed 829.31MB rss 1499.77MB"
+2021-1-28 09-59-debug:"整理静态模板文件 start"0.7624999999999997
+2021-1-28 09-59-debug:"web-mobile:(onAfterBuild) √"0.8124999999999997
+2021-1-28 09-59-debug:"保存 settings.json start"0.7499999999999998
