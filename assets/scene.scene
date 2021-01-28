@@ -8036,7 +8036,7 @@
     "node": {
       "__id__": 320
     },
-    "_enabled": false,
+    "_enabled": true,
     "__prefab": {
       "__id__": 336
     },
@@ -8836,7 +8836,7 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -240,
+      "x": -213.33333333333331,
       "y": 0,
       "z": 0
     },
@@ -8870,7 +8870,7 @@
       "__id__": 364
     },
     "_children": [],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 366
@@ -8982,7 +8982,7 @@
     "_priority": 0,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 160,
+      "width": 213.33333333333334,
       "height": 100
     },
     "_anchorPoint": {
@@ -9110,7 +9110,7 @@
     "__prefab": null,
     "_alignFlags": 12,
     "_target": null,
-    "_left": 0,
+    "_left": 1.4210854715202004e-14,
     "_right": 0,
     "_top": 460,
     "_bottom": 0,
@@ -9158,7 +9158,7 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -80,
+      "x": 2.842170943040401e-14,
       "y": 0,
       "z": 0
     },
@@ -9192,7 +9192,7 @@
       "__id__": 375
     },
     "_children": [],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 377
@@ -9304,7 +9304,7 @@
     "_priority": 0,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 160,
+      "width": 213.33333333333334,
       "height": 100
     },
     "_anchorPoint": {
@@ -9432,7 +9432,7 @@
     "__prefab": null,
     "_alignFlags": 12,
     "_target": null,
-    "_left": 160,
+    "_left": 213.33333333333337,
     "_right": 0,
     "_top": 460,
     "_bottom": 0,
@@ -9462,7 +9462,7 @@
         "__id__": 387
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 390
@@ -9802,7 +9802,7 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 240,
+      "x": 213.33333333333337,
       "y": 0,
       "z": 0
     },
@@ -9836,7 +9836,7 @@
       "__id__": 397
     },
     "_children": [],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 399
@@ -9948,7 +9948,7 @@
     "_priority": 0,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 160,
+      "width": 213.33333333333334,
       "height": 100
     },
     "_anchorPoint": {
@@ -10076,7 +10076,7 @@
     "__prefab": null,
     "_alignFlags": 12,
     "_target": null,
-    "_left": 0.75,
+    "_left": 0.6666666666666667,
     "_right": 0,
     "_top": 460,
     "_bottom": 0,
